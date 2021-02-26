@@ -1,0 +1,173 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicImageOperations", "Week 1\BasicImageOperations\BasicImageOperations.vcxproj", "{ED034706-E791-413A-856C-37F6C209AEA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week 1", "Week 1", "{B8C6125E-979D-43AB-99D4-CECEF18CD4E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{FEFB8419-B73A-4612-BCB0-331851E2C89C}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\CMAKE notes for compiling OpenCV in Linux.txt = Docs\CMAKE notes for compiling OpenCV in Linux.txt
+		Docs\debug_files_list.txt = Docs\debug_files_list.txt
+		Docs\getting_started_with_images.html = Docs\getting_started_with_images.html
+		Docs\getting_started_with_images.ipynb = Docs\getting_started_with_images.ipynb
+		Docs\getting_started_with_images.pdf = Docs\getting_started_with_images.pdf
+		Docs\release_files_list.txt = Docs\release_files_list.txt
+		Docs\setup_vars_opencv4.cmd = Docs\setup_vars_opencv4.cmd
+		Docs\week1-cpp.zip = Docs\week1-cpp.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Files", "Data Files", "{04F670A2-C27A-4007-A027-002546682798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application_Sunglasses_Filter", "Application_Sunglasses_Filter", "{ED559417-212A-4857-B64B-C6ABD304E84E}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Application_Sunglasses_Filter\CMakeLists.txt = Week 1\DataFiles\Application_Sunglasses_Filter\CMakeLists.txt
+		Week 1\DataFiles\Application_Sunglasses_Filter\dataPath.hpp = Week 1\DataFiles\Application_Sunglasses_Filter\dataPath.hpp
+		Week 1\DataFiles\Application_Sunglasses_Filter\Load_Images.cpp = Week 1\DataFiles\Application_Sunglasses_Filter\Load_Images.cpp
+		Week 1\DataFiles\Application_Sunglasses_Filter\Using_Arithmetic_Operations.cpp = Week 1\DataFiles\Application_Sunglasses_Filter\Using_Arithmetic_Operations.cpp
+		Week 1\DataFiles\Application_Sunglasses_Filter\Using_Naive_Replace.cpp = Week 1\DataFiles\Application_Sunglasses_Filter\Using_Naive_Replace.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic_Image_Operations", "Basic_Image_Operations", "{C3BE7218-3FCF-4C4A-AC59-7FA59D920371}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Basic_Image_Operations\CMakeLists.txt = Week 1\DataFiles\Basic_Image_Operations\CMakeLists.txt
+		Week 1\DataFiles\Basic_Image_Operations\Copying_a_region_to_another.cpp = Week 1\DataFiles\Basic_Image_Operations\Copying_a_region_to_another.cpp
+		Week 1\DataFiles\Basic_Image_Operations\Create_new_images.cpp = Week 1\DataFiles\Basic_Image_Operations\Create_new_images.cpp
+		Week 1\DataFiles\Basic_Image_Operations\Creating_an_image_mask.cpp = Week 1\DataFiles\Basic_Image_Operations\Creating_an_image_mask.cpp
+		Week 1\DataFiles\Basic_Image_Operations\Cropping_an_Image_Section.cpp = Week 1\DataFiles\Basic_Image_Operations\Cropping_an_Image_Section.cpp
+		Week 1\DataFiles\Basic_Image_Operations\dataPath.hpp = Week 1\DataFiles\Basic_Image_Operations\dataPath.hpp
+		Week 1\DataFiles\Basic_Image_Operations\Resizing_an_image.cpp = Week 1\DataFiles\Basic_Image_Operations\Resizing_an_image.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bitwise_Operations", "Bitwise_Operations", "{06598A2E-35FE-4E2E-BC46-7EFACC104E6E}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Bitwise_Operations\CMakeLists.txt = Week 1\DataFiles\Bitwise_Operations\CMakeLists.txt
+		Week 1\DataFiles\Bitwise_Operations\dataPath.hpp = Week 1\DataFiles\Bitwise_Operations\dataPath.hpp
+		Week 1\DataFiles\Bitwise_Operations\Example.cpp = Week 1\DataFiles\Bitwise_Operations\Example.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{3CA2E8B5-56EC-4A1C-8B04-ADB074DFB495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Getting_started_with_images", "Getting_started_with_images", "{551B58AA-E65F-460C-B5E7-991FFFBA0E47}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Getting_started_with_images\Image_as_a_matrix.cpp = Week 1\DataFiles\Getting_started_with_images\Image_as_a_matrix.cpp
+		Week 1\DataFiles\Getting_started_with_images\Image_with_alpha_channel.cpp = Week 1\DataFiles\Getting_started_with_images\Image_with_alpha_channel.cpp
+		Week 1\DataFiles\Getting_started_with_images\Manipulating_Color_Pixels.cpp = Week 1\DataFiles\Getting_started_with_images\Manipulating_Color_Pixels.cpp
+		Week 1\DataFiles\Getting_started_with_images\Manipulating_group_of_pixels.cpp = Week 1\DataFiles\Getting_started_with_images\Manipulating_group_of_pixels.cpp
+		Week 1\DataFiles\Getting_started_with_images\Manipulating_Pixels.cpp = Week 1\DataFiles\Getting_started_with_images\Manipulating_Pixels.cpp
+		Week 1\DataFiles\Getting_started_with_images\Saving_an_image.cpp = Week 1\DataFiles\Getting_started_with_images\Saving_an_image.cpp
+		Week 1\DataFiles\Getting_started_with_images\Splitting_and_merging_channels.cpp = Week 1\DataFiles\Getting_started_with_images\Splitting_and_merging_channels.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image_Annotation", "Image_Annotation", "{B78619A8-0857-4103-A0E8-CF8661EC34E1}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Image_Annotation\CMakeLists.txt = Week 1\DataFiles\Image_Annotation\CMakeLists.txt
+		Week 1\DataFiles\Image_Annotation\dataPath.hpp = Week 1\DataFiles\Image_Annotation\dataPath.hpp
+		Week 1\DataFiles\Image_Annotation\Drawing_Circles.cpp = Week 1\DataFiles\Image_Annotation\Drawing_Circles.cpp
+		Week 1\DataFiles\Image_Annotation\Drawing_Ellipse.cpp = Week 1\DataFiles\Image_Annotation\Drawing_Ellipse.cpp
+		Week 1\DataFiles\Image_Annotation\Drawing_Lines.cpp = Week 1\DataFiles\Image_Annotation\Drawing_Lines.cpp
+		Week 1\DataFiles\Image_Annotation\Drawing_Rectangles.cpp = Week 1\DataFiles\Image_Annotation\Drawing_Rectangles.cpp
+		Week 1\DataFiles\Image_Annotation\Drawing_Text.cpp = Week 1\DataFiles\Image_Annotation\Drawing_Text.cpp
+		Week 1\DataFiles\Image_Annotation\Intro.cpp = Week 1\DataFiles\Image_Annotation\Intro.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mathematical_Operations_on_Images", "Mathematical_Operations_on_Images", "{47211A2C-81B0-427D-99CD-B9DFD978AB77}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\Mathematical_Operations_on_Images\Brightness_Enhancement.cpp = Week 1\DataFiles\Mathematical_Operations_on_Images\Brightness_Enhancement.cpp
+		Week 1\DataFiles\Mathematical_Operations_on_Images\CMakeLists.txt = Week 1\DataFiles\Mathematical_Operations_on_Images\CMakeLists.txt
+		Week 1\DataFiles\Mathematical_Operations_on_Images\Contrast_Enhancement.cpp = Week 1\DataFiles\Mathematical_Operations_on_Images\Contrast_Enhancement.cpp
+		Week 1\DataFiles\Mathematical_Operations_on_Images\dataPath.hpp = Week 1\DataFiles\Mathematical_Operations_on_Images\dataPath.hpp
+		Week 1\DataFiles\Mathematical_Operations_on_Images\Datatype_Conversion.cpp = Week 1\DataFiles\Mathematical_Operations_on_Images\Datatype_Conversion.cpp
+		Week 1\DataFiles\Mathematical_Operations_on_Images\Pitfalls_of_using_uint8.cpp = Week 1\DataFiles\Mathematical_Operations_on_Images\Pitfalls_of_using_uint8.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "results", "results", "{DA1DFD28-C1C4-4A7B-9095-AA26D705B506}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\results\.gitkeep = Week 1\DataFiles\results\.gitkeep
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{994BDB31-D0E9-4012-B2AA-27894EFEB7C2}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\data\images\boy.jpg = Week 1\DataFiles\data\images\boy.jpg
+		Week 1\DataFiles\data\images\boy_with_axes.png = Week 1\DataFiles\data\images\boy_with_axes.png
+		Week 1\DataFiles\data\images\IDCard-Satya.png = Week 1\DataFiles\data\images\IDCard-Satya.png
+		Week 1\DataFiles\data\images\IDCard-Template.png = Week 1\DataFiles\data\images\IDCard-Template.png
+		Week 1\DataFiles\data\images\musk.jpg = Week 1\DataFiles\data\images\musk.jpg
+		Week 1\DataFiles\data\images\number_zero.jpg = Week 1\DataFiles\data\images\number_zero.jpg
+		Week 1\DataFiles\data\images\opencv-cpp-image-header.jpg = Week 1\DataFiles\data\images\opencv-cpp-image-header.jpg
+		Week 1\DataFiles\data\images\panther.png = Week 1\DataFiles\data\images\panther.png
+		Week 1\DataFiles\data\images\QRCode-Output.png = Week 1\DataFiles\data\images\QRCode-Output.png
+		Week 1\DataFiles\data\images\QRCode-Satya.png = Week 1\DataFiles\data\images\QRCode-Satya.png
+		Week 1\DataFiles\data\images\sunglass.png = Week 1\DataFiles\data\images\sunglass.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "videos", "videos", "{523ECE45-8E1B-4C27-8E5D-949E7C8C06EF}"
+	ProjectSection(SolutionItems) = preProject
+		Week 1\DataFiles\data\videos\chaplin.mp4 = Week 1\DataFiles\data\videos\chaplin.mp4
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{54D15530-3943-4919-B6E3-A5D14038E01C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GettingStarted", "Week 1\GettingStarted\GettingStarted.vcxproj", "{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SunglassesFilter", "Week 1\SunglassesFilter\SunglassesFilter.vcxproj", "{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Debug|x64.ActiveCfg = Debug|x64
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Debug|x64.Build.0 = Debug|x64
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Debug|x86.ActiveCfg = Debug|Win32
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Debug|x86.Build.0 = Debug|Win32
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Release|x64.ActiveCfg = Release|x64
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Release|x64.Build.0 = Release|x64
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Release|x86.ActiveCfg = Release|Win32
+		{ED034706-E791-413A-856C-37F6C209AEA6}.Release|x86.Build.0 = Release|Win32
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Debug|x64.ActiveCfg = Debug|x64
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Debug|x64.Build.0 = Debug|x64
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Debug|x86.ActiveCfg = Debug|Win32
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Debug|x86.Build.0 = Debug|Win32
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Release|x64.ActiveCfg = Release|x64
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Release|x64.Build.0 = Release|x64
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Release|x86.ActiveCfg = Release|Win32
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592}.Release|x86.Build.0 = Release|Win32
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Debug|x64.ActiveCfg = Debug|x64
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Debug|x64.Build.0 = Debug|x64
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Debug|x86.ActiveCfg = Debug|Win32
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Debug|x86.Build.0 = Debug|Win32
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Release|x64.ActiveCfg = Release|x64
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Release|x64.Build.0 = Release|x64
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Release|x86.ActiveCfg = Release|Win32
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED034706-E791-413A-856C-37F6C209AEA6} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+		{04F670A2-C27A-4007-A027-002546682798} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+		{ED559417-212A-4857-B64B-C6ABD304E84E} = {04F670A2-C27A-4007-A027-002546682798}
+		{C3BE7218-3FCF-4C4A-AC59-7FA59D920371} = {04F670A2-C27A-4007-A027-002546682798}
+		{06598A2E-35FE-4E2E-BC46-7EFACC104E6E} = {04F670A2-C27A-4007-A027-002546682798}
+		{3CA2E8B5-56EC-4A1C-8B04-ADB074DFB495} = {04F670A2-C27A-4007-A027-002546682798}
+		{551B58AA-E65F-460C-B5E7-991FFFBA0E47} = {04F670A2-C27A-4007-A027-002546682798}
+		{B78619A8-0857-4103-A0E8-CF8661EC34E1} = {04F670A2-C27A-4007-A027-002546682798}
+		{47211A2C-81B0-427D-99CD-B9DFD978AB77} = {04F670A2-C27A-4007-A027-002546682798}
+		{DA1DFD28-C1C4-4A7B-9095-AA26D705B506} = {04F670A2-C27A-4007-A027-002546682798}
+		{994BDB31-D0E9-4012-B2AA-27894EFEB7C2} = {3CA2E8B5-56EC-4A1C-8B04-ADB074DFB495}
+		{523ECE45-8E1B-4C27-8E5D-949E7C8C06EF} = {3CA2E8B5-56EC-4A1C-8B04-ADB074DFB495}
+		{54D15530-3943-4919-B6E3-A5D14038E01C} = {551B58AA-E65F-460C-B5E7-991FFFBA0E47}
+		{3BA7EB51-CC9C-469B-A31B-C49CD0D1D592} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}
+	EndGlobalSection
+EndGlobal

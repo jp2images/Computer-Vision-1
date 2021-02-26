@@ -1,0 +1,1 @@
+std::string DATA_PATH = "D:/source/repos/OpenCV.org/Week1_GettingStarted/Week1Files";
