@@ -1,1 +1,1 @@
-std::string DATA_PATH = "D:/source/repos/OpenCV.org/Week1_GettingStarted/Week1Files";
+std::string DATA_PATH = "../../../Week 1/DataFiles/Data";
