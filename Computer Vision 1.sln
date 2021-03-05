@@ -118,6 +118,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BitwiseOperations", "Week 1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Annotate", "Week 1\Annotate\Annotate.vcxproj", "{03F5282B-9A74-4372-9048-4027DAC2796D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssignmentQRCodeReader", "Week 1\Assignment_QRCodeReader\AssignmentQRCodeReader.vcxproj", "{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -166,6 +168,14 @@ Global
 		{03F5282B-9A74-4372-9048-4027DAC2796D}.Release|x64.Build.0 = Release|x64
 		{03F5282B-9A74-4372-9048-4027DAC2796D}.Release|x86.ActiveCfg = Release|Win32
 		{03F5282B-9A74-4372-9048-4027DAC2796D}.Release|x86.Build.0 = Release|Win32
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Debug|x64.ActiveCfg = Debug|x64
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Debug|x64.Build.0 = Debug|x64
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Debug|x86.ActiveCfg = Debug|Win32
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Debug|x86.Build.0 = Debug|Win32
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x64.ActiveCfg = Release|x64
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x64.Build.0 = Release|x64
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x86.ActiveCfg = Release|Win32
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +198,7 @@ Global
 		{B5CF8B0F-A52A-4F05-9F9D-E6ADD431C493} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
 		{0528FAAB-092F-487A-9785-374A3810E928} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
 		{03F5282B-9A74-4372-9048-4027DAC2796D} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}
