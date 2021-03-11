@@ -40,84 +40,39 @@ int main() {
         cout << "QR Code NOT detected!" << endl << endl;
     }
 
+    cout << bbox.at<float>(0, 0) << endl; //22
+    cout << bbox.at<float>(0, 1) << endl; //82
+    cout << bbox.at<float>(0, 2) << endl; //126
+    cout << bbox.at<float>(0, 3) << endl; //82
+
     int n = bbox.cols;
-
-    //Top Horizontal
-    cv::line(img,
-        cv::Point2i(bbox.at<float>(0, 0), bbox.at<float>(0, 1)), cv::Point2i(bbox.at<float>(0, 2), bbox.at<float>(0, 1)),
-        cv::Scalar(255, 0, 0), 3, LINE_AA);
-
-
-    //Bottom Horizontal
-    cv::line(img,
-        cv::Point2i(bbox.at<float>(0, 0), bbox.at<float>(0, 2)+64), cv::Point2i(bbox.at<float>(0, 2), bbox.at<float>(0, 2)+64),
-        cv::Scalar(255, 255, 0), 3, LINE_AA);
-
-
-    //Left Vertical
-    cv::line(img,
-        cv::Point2i(bbox.at<float>(0, 0), bbox.at<float>(0, 1)), cv::Point2i(bbox.at<float>(0, 0), bbox.at<float>(0, 2)),
-        cv::Scalar(255, 0, 0), 3, LINE_AA);
-
-
-    //Right Vertical
-    cv::line(img,
-        cv::Point2i(bbox.at<float>(0, 2), bbox.at<float>(0, 2)), cv::Point2i(bbox.at<float>(0, 2), bbox.at<float>(0, 1)),
-        cv::Scalar(255, 0, 0), 3, LINE_AA);
-
-
-
-    //cv::line(img,
-    //    cv::Point2i(126, bbox.at<float>(0, 1)), cv::Point2i(22, bbox.at<float>(0, 3)),
-    //    cv::Scalar(90, 90, 90), 2, LINE_AA);
-
-
-
-    cv::imshow("IdResult", img);
-    cv::waitKey(0);
-    cv::destroyWindow("IdResult");
-
-
-
-
-
-    //cv::line(img,
-    //    cv::Point2i(0, bbox.at<float>(0, 2)),
-    //    cv::Point2i(0, (bbox.at<float>(0, 2 % n))),
-    //    cv::Scalar(255, 0, 0), 3, LINE_AA);
-    //cv::imshow("IdResult3", img);
-    //cv::waitKey(0);
-
-    //cv::line(img,
-    //    cv::Point2i(bbox.at<float>(0, 3), 0),
-    //    cv::Point2i(bbox.at<float>(0, 3 % n), 0),
-    //    cv::Scalar(255, 0, 0), 3, LINE_AA);
-    //cv::imshow("IdResult4", img);
-    //cv::waitKey(0);
-
-
            
-    for (int i = 0; i <n; i++) {
-        cout << "index i: " << i << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "index i: " << i << " :" << bbox.at<float>(0, i) << endl << endl;
 
-        //cv::line(img, 
-        //    cv::Point2i(0, bbox.at<float>(0, i)), 
-        //    cv::Point2i(0, bbox.at<float>(0, (i + 1) % n)),
-        //    cv::Scalar(255, 0, 0), 3, LINE_AA);
+        cv::line(img, 
+            cv::Point2i(bbox.at<float>(0, i), bbox.at<float>(0, i)),
+            cv::Point2i(bbox.at<float>(0,(i + 1) % n), bbox.at<float>(0,(i + 1) % n)),
+            cv::Scalar(255, 0, 255), 3, LINE_AA);
 
-        //cv::line(img,
-        //    cv::Point2i(bbox.at<float>(0, i), 0),
-        //    cv::Point2i(bbox.at<float>(0, (i + 1) % n), 0),
-        //    cv::Scalar(255, 0, 0), 3, LINE_AA);
+        cout << "(" << bbox.at<float>(0, i) << ", " << bbox.at<float>(0, (i + 1) % n) << ")" << endl;
+
+        //line(img, 
+        //    Point2i(bbox.at<float>(0, i), bbox.at<float>(0, i)), 
+        //    Point2i(bbox.at<float>(0, (i + 1) % n), bbox.at<float>(0, (i + 1) % n)), 
+        //    Scalar(255, 0, 0), 3, LINE_AA);
+
+        //Internet Sample
+        //line(img, 
+        //    Point2i(bbox.at<float>(i, 0), bbox.at<float>(i, 1)), 
+        //    Point2i(bbox.at<float>((i + 1) % n, 0), bbox.at<float>((i + 1) % n, 1)), 
+        //    Scalar(255, 0, 0), 3);
 
 
-
-
-        //cv::imshow("IdResult", img);
-        ////cv::imshow("Result", rectifiedImage);
-        //cv::waitKey(0);
-        //cv::destroyWindow("IdResult");
+        cv::imshow("IdResult2", img);
+        cv::waitKey(0);
     }
+
 
     //cv::imshow("Result", rectifiedImage);
     //cv::imshow("IdResult", img);
