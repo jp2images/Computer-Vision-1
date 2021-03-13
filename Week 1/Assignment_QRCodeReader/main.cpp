@@ -57,6 +57,16 @@ int main() {
 
         cout << "(" << bbox.at<float>(0, i) << ", " << bbox.at<float>(0, (i + 1) % n) << ")" << endl;
 
+
+
+        //cv::line(img,
+        //    cv::Point2i(bbox.at<float>(0, i), bbox.at<float>(0, i)),
+        //    cv::Point2i(bbox.at<float>(0, (i + 1) % n), bbox.at<float>(0, (i + 1) % n)),
+        //    cv::Scalar(255, 0, 255), 3, LINE_AA);
+
+        //cout << "(" << bbox.at<float>(0, i) << ", " << bbox.at<float>(0, (i + 1) % n) << ")" << endl;
+
+
         //line(img, 
         //    Point2i(bbox.at<float>(0, i), bbox.at<float>(0, i)), 
         //    Point2i(bbox.at<float>(0, (i + 1) % n), bbox.at<float>(0, (i + 1) % n)), 
