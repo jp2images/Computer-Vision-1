@@ -120,6 +120,30 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Annotate", "Week 1\Annotate
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssignmentQRCodeReader", "Week 1\Assignment_QRCodeReader\AssignmentQRCodeReader.vcxproj", "{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week 2", "Week 2", "{BFBFE6E1-6575-4927-A435-D59A4609BFB1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Introduction", "Week 2\Introduction\Introduction.vcxproj", "{BA271581-E2B0-4D66-BA05-894405556330}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Files", "Data Files", "{750206BB-CA86-4950-A3E0-E140D419FEDA}"
+	ProjectSection(SolutionItems) = preProject
+		Week 2\DataFiles\adding_a_trackbar_as_controller.cpp = Week 2\DataFiles\adding_a_trackbar_as_controller.cpp
+		Week 2\DataFiles\chaplin.mp4 = Week 2\DataFiles\chaplin.mp4
+		Week 2\DataFiles\CMakeLists.txt = Week 2\DataFiles\CMakeLists.txt
+		Week 2\DataFiles\dataPath.hpp = Week 2\DataFiles\dataPath.hpp
+		Week 2\DataFiles\sample.jpg = Week 2\DataFiles\sample.jpg
+		Week 2\DataFiles\truth.png = Week 2\DataFiles\truth.png
+		Week 2\DataFiles\using_the_keyboard_as_input_device.cpp = Week 2\DataFiles\using_the_keyboard_as_input_device.cpp
+		Week 2\DataFiles\using_the_mouse_for_annotation.cpp = Week 2\DataFiles\using_the_mouse_for_annotation.cpp
+		Week 2\DataFiles\VideoRead.cpp = Week 2\DataFiles\VideoRead.cpp
+		Week 2\DataFiles\VideoWrite.cpp = Week 2\DataFiles\VideoWrite.cpp
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadDisplayVideo", "Week 2\ReadDisplayVideo\ReadDisplayVideo.vcxproj", "{FDF5792D-07BD-4148-8B7F-3E40DE100F56}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keyboard", "Week 2\Keyboard\Keyboard.vcxproj", "{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MouseAnnotations", "Week 2\MouseAnnotations\MouseAnnotations.vcxproj", "{F0AA15DE-C05D-4385-99C9-367499F85B64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -176,6 +200,38 @@ Global
 		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x64.Build.0 = Release|x64
 		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x86.ActiveCfg = Release|Win32
 		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0}.Release|x86.Build.0 = Release|Win32
+		{BA271581-E2B0-4D66-BA05-894405556330}.Debug|x64.ActiveCfg = Debug|x64
+		{BA271581-E2B0-4D66-BA05-894405556330}.Debug|x64.Build.0 = Debug|x64
+		{BA271581-E2B0-4D66-BA05-894405556330}.Debug|x86.ActiveCfg = Debug|Win32
+		{BA271581-E2B0-4D66-BA05-894405556330}.Debug|x86.Build.0 = Debug|Win32
+		{BA271581-E2B0-4D66-BA05-894405556330}.Release|x64.ActiveCfg = Release|x64
+		{BA271581-E2B0-4D66-BA05-894405556330}.Release|x64.Build.0 = Release|x64
+		{BA271581-E2B0-4D66-BA05-894405556330}.Release|x86.ActiveCfg = Release|Win32
+		{BA271581-E2B0-4D66-BA05-894405556330}.Release|x86.Build.0 = Release|Win32
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Debug|x64.ActiveCfg = Debug|x64
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Debug|x64.Build.0 = Debug|x64
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Debug|x86.ActiveCfg = Debug|Win32
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Debug|x86.Build.0 = Debug|Win32
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Release|x64.ActiveCfg = Release|x64
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Release|x64.Build.0 = Release|x64
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Release|x86.ActiveCfg = Release|Win32
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56}.Release|x86.Build.0 = Release|Win32
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Debug|x64.ActiveCfg = Debug|x64
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Debug|x64.Build.0 = Debug|x64
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Debug|x86.ActiveCfg = Debug|Win32
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Debug|x86.Build.0 = Debug|Win32
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Release|x64.ActiveCfg = Release|x64
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Release|x64.Build.0 = Release|x64
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Release|x86.ActiveCfg = Release|Win32
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE}.Release|x86.Build.0 = Release|Win32
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Debug|x64.ActiveCfg = Debug|x64
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Debug|x64.Build.0 = Debug|x64
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Debug|x86.Build.0 = Debug|Win32
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Release|x64.ActiveCfg = Release|x64
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Release|x64.Build.0 = Release|x64
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Release|x86.ActiveCfg = Release|Win32
+		{F0AA15DE-C05D-4385-99C9-367499F85B64}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,6 +255,11 @@ Global
 		{0528FAAB-092F-487A-9785-374A3810E928} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
 		{03F5282B-9A74-4372-9048-4027DAC2796D} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
 		{49BB6A82-AAE3-4DBC-9A72-A5CAF1D597D0} = {B8C6125E-979D-43AB-99D4-CECEF18CD4E2}
+		{BA271581-E2B0-4D66-BA05-894405556330} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{750206BB-CA86-4950-A3E0-E140D419FEDA} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{FDF5792D-07BD-4148-8B7F-3E40DE100F56} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{F0AA15DE-C05D-4385-99C9-367499F85B64} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}
