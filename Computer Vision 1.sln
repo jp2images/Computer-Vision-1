@@ -189,6 +189,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7CA42C
 		Week 3\DataFiles\data\images\truth.png = Week 3\DataFiles\data\images\truth.png
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ErosionDilation", "Week 3\ErosionDilation\ErosionDilation.vcxproj", "{AD141224-72C9-4BF6-A926-48E94C878C83}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Morphology", "Week 3\Morphology\Morphology.vcxproj", "{36685655-5147-4966-9A5B-4A1800FA426C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -301,6 +305,22 @@ Global
 		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x64.Build.0 = Release|x64
 		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x86.ActiveCfg = Release|Win32
 		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x86.Build.0 = Release|Win32
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Debug|x64.ActiveCfg = Debug|x64
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Debug|x64.Build.0 = Debug|x64
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Debug|x86.ActiveCfg = Debug|Win32
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Debug|x86.Build.0 = Debug|Win32
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Release|x64.ActiveCfg = Release|x64
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Release|x64.Build.0 = Release|x64
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Release|x86.ActiveCfg = Release|Win32
+		{AD141224-72C9-4BF6-A926-48E94C878C83}.Release|x86.Build.0 = Release|Win32
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Debug|x64.ActiveCfg = Debug|x64
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Debug|x64.Build.0 = Debug|x64
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Debug|x86.ActiveCfg = Debug|Win32
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Debug|x86.Build.0 = Debug|Win32
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x64.ActiveCfg = Release|x64
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x64.Build.0 = Release|x64
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x86.ActiveCfg = Release|Win32
+		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -335,6 +355,8 @@ Global
 		{0E3BB9C8-2E95-463A-9423-F00ABD2C335B} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 		{0E2D40B7-5BF5-4812-BF4A-DD369803E772} = {0E3BB9C8-2E95-463A-9423-F00ABD2C335B}
 		{7CA42CBF-577A-4C7E-97E1-5672C1AA3108} = {0E2D40B7-5BF5-4812-BF4A-DD369803E772}
+		{AD141224-72C9-4BF6-A926-48E94C878C83} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
+		{36685655-5147-4966-9A5B-4A1800FA426C} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}

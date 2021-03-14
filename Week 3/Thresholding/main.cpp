@@ -1,70 +1,108 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
-//#include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "dataPath.hpp"
 
 using namespace std;
 using namespace cv;
 
+void thresholdingUsingForLoop(cv::Mat, cv::Mat, int, int);
+
 
 int main() {
-        
-    cv::VideoCapture usbCam(0);
-    cv::Mat frame;
-    int k = 0;
+    string imagePath = DATA_PATH + "images/threshold.png";
+    
+    string sourceWindwow = "Source Image";
+    string destinationWindow = "Destination Image";
+    string windowName = "OpenCV Threshold";
+  
+    cv::Mat source = cv::imread(imagePath, IMREAD_GRAYSCALE);
 
-    if (!usbCam.isOpened()) {
-        cout << "USBCam failed to open" << endl << endl;
-        return -1;
-    }
-    else {
+    int threshold = 100;
+    int maxValue = 255;
+    
+    //cv::namedWindow(sourceWindwow, cv::WINDOW_AUTOSIZE);
+    //cv::imshow(sourceWindwow, source);
+    //cv::waitKey(0);
+    //cv::destroyWindow(sourceWindwow);
 
-        int usbVideoWidth = usbCam.get(CAP_PROP_FRAME_WIDTH);
-        int usbVideoHeight = usbCam.get(CAP_PROP_FRAME_HEIGHT);
-        cout << endl << endl << "USB Width: " << usbVideoWidth << " USB Height: " << usbVideoHeight << endl << endl;
+    cv::Mat dest = source.clone();
 
-        cv::Mat usbFrame;
-        cv::Mat grayFrame;
+    clock_t clockTime;
+    double cpu_time_used;
 
-        usbCam >> usbFrame;
-        cv::imshow("USB Frame", usbFrame);
-        cv::waitKey(0);
+    cv::namedWindow(destinationWindow, cv::WINDOW_AUTOSIZE);
+    cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
 
-        while (1) {
-            //start capturing the data from the usb camera
-            usbCam >> usbFrame;
+    clockTime = clock();
+    thresholdingUsingForLoop(source, dest, threshold, maxValue);
 
-            if (k == 27) break; //ESC key was pressed
+    clockTime = clock() - clockTime;
+    cpu_time_used = ((double)clockTime / CLOCKS_PER_SEC);
+    cout << endl << "Time Taken: " << cpu_time_used << " seconds." << endl << endl;
 
-            //The e or the E key was pressed
-            if (k == 101 || k == 69) {                
-                cv::putText(usbFrame, "E is pressed, press Z or Esc", cv::Point(100, 180),
-                    cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 3, LINE_AA);
-            }
+    clockTime = clock();
+    cv::threshold(source, dest, threshold, maxValue, cv::THRESH_BINARY);
+    clockTime = clock() - clockTime;
+    cpu_time_used = ((double)clockTime / CLOCKS_PER_SEC);
+    cout << endl << "Time Taken: " << cpu_time_used << " seconds." << endl << endl;
 
-            //The z or the Z key was pressed
-            if (k == 90 || k == 122) {                
-                cv::putText(usbFrame, "Z is pressed, press E or Esc", cv::Point(100, 180),
-                    cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 0, 0), 3, LINE_AA);
-            }
+    cv::imshow(destinationWindow, dest);
+    cv::imshow(windowName, dest);
 
-            //Open two windows one color and one gray scale
-            cv::cvtColor(usbFrame, grayFrame, cv::COLOR_BGR2GRAY);
-            cv::imshow("USB Frame", usbFrame);
-            cv::imshow("USB Gray", grayFrame);
-            k = cv::waitKey(10000) & 0xFF;
-        }
-        
-        usbCam.release();
-        cv::destroyAllWindows();
-    }
+
+
+    cv::Mat dst_binary;
+    cv::threshold(source, dst_binary, threshold, maxValue, cv::THRESH_BINARY);
+    cv::imshow("Binary Threshold", dst_binary);
+
+    cv::Mat dst_binary_inverse;
+    cv::threshold(source, dst_binary_inverse, threshold, maxValue, cv::THRESH_BINARY_INV);
+    cv::imshow("Binary Inverse Threshold", dst_binary_inverse);
+
+    cv::Mat dst_truncate;
+    cv::threshold(source, dst_truncate, threshold, maxValue, cv::THRESH_TRUNC);
+    cv::imshow("Truncate Threshold", dst_truncate);
+
+    cv::Mat dst_to_zero;
+    cv::threshold(source, dst_to_zero, threshold, maxValue, cv::THRESH_TOZERO);
+    cv::imshow("Threshold to Zero", dst_to_zero);
+
+    cv::Mat dst_to_zero_inv;
+    cv::threshold(source, dst_to_zero_inv, threshold, maxValue, cv::THRESH_TOZERO);
+    cv::imshow("Threshold to Zero Inverted", dst_to_zero_inv);
+
+
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 
     return 0;
+}
+
+/// <summary>
+/// Implement the threshold manually
+/// </summary>
+/// <param name="source"></param>
+/// <param name="destination"></param>
+/// <param name="threshold"></param>
+/// <param name="maxValue"></param>
+void thresholdingUsingForLoop(cv::Mat source, cv::Mat destination, int threshold, int maxValue) {
+    int height = source.size().height;
+    int width = source.size().width;
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            if (source.at<uchar>(y, x) > threshold) {
+                destination.at<uchar>(y, x) = maxValue;
+            }
+            else {
+                destination.at<uchar>(y, x) = 0;
+            }
+        }
+    }
 }
