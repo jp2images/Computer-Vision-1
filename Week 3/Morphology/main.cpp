@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
@@ -14,44 +15,61 @@ using namespace cv;
 void quickShow(cv::Mat, std::string);
 
 int main() {
-    string imageName = DATA_PATH + "images/dilation_example.jpg";    
-    string sourceWindow = "Source Image";
-    string dilatedImageWindow = "Dilated Image";
-    string erodedImageWindow = "Eroded Image";
-  
-    cv::Mat source = cv::imread(imageName, IMREAD_COLOR);
-    
-    cv::namedWindow(sourceWindow, cv::WINDOW_AUTOSIZE);
-    quickShow(source, sourceWindow);
 
-    int kernelSize = 7;
-    cv::Mat kernel1 = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(kernelSize, kernelSize));
+    cv::Mat demoImage = cv::Mat::zeros(cv::Size(10, 10), CV_8U);
+    cout << demoImage << endl << endl;
+    quickShow(demoImage*255, "Demo Image");
 
-    cv::Mat imageDilated;
-    cv::dilate(source, imageDilated, kernel1); //iterations is 1 from a default parameter.
-    quickShow(imageDilated, "Dilated Image");
+    demoImage.at<uchar>(0, 1) = 1;
+    demoImage.at<uchar>(9, 0) = 1;
+    demoImage.at<uchar>(8, 9) = 1;
+    demoImage.at<uchar>(2, 2) = 1;
+    demoImage(cv::Range(5, 8), cv::Range(5, 8)).setTo(1);
 
-    kernelSize = 3;
-    cv::Mat kernel2 = getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(kernelSize, kernelSize));
-    //quickShow(kernel2*255, "Kernel 2"); //Multiply by 255 to make the kernel white
+    cout << demoImage << endl << endl;
+    quickShow(demoImage*255, "Demo Image 1");
 
-    cv::Mat imageDilated1, imageDilated2;
-    cv::dilate(source, imageDilated1, kernel2, cv::Point(-1, -1), -1); //one iteration
-    cv::dilate(source, imageDilated2, kernel2, cv::Point(-1, -1), 2); // 2 iterations
-    quickShow(imageDilated1, "First Dilation 1 iteration");
-    quickShow(imageDilated2, "Second Dilation 2 iterations");
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
+    cout << element << endl << endl;
+
+    int kernelSize = element.size().height;
+
+    int height = demoImage.size().height;
+    int width = demoImage.size().width;
 
 
-    //Erosion
-    imageName = DATA_PATH + "images/erosion_example.jpg";
-    source = cv::imread(imageName, cv::IMREAD_COLOR);
-    quickShow(source, "Source Image Erode");
+    //Dilation from scratch
+    int border = kernelSize / 2;
+    cv::Mat paddedDemoImage = cv::Mat::zeros(cv::Size(height + (border * 2), width + (border * 2)), CV_8UC1);
 
-    cv::Mat imageEroded;
-    cv::erode(source, imageEroded, kernel1);
-    quickShow(imageEroded, "Eroded image");
+    cv::copyMakeBorder(demoImage, paddedDemoImage, border, border, border, border, cv::BORDER_CONSTANT, 0);
+    cv::Mat bitOR;
+
+    for (int h_i = border; h_i < height + border; h_i++) {
+        for (int w_i = border; w_i < width + border; w_i++) {
+            if (demoImage.at<uchar>(h_i - border, h_i - border)) {
+                cout << "White Pixel found @ " << h_i << ", " << w_i << endl;
+                cout << paddedDemoImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)) << endl;
+                cout << element << endl;
+                cv::bitwise_or(paddedDemoImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)), element, bitOR);
+                cout << bitOR << endl;
+                cout << paddedDemoImage(Range(h_i - border, h_i + border + 1), Range(w_i - border, w_i + border + 1)) << endl;
+
+                bitOR.copyTo(paddedDemoImage(Range(h_i - border, h_i + border + 1), Range(w_i - border, w_i + border + 1)));
+                cout << paddedDemoImage << endl;
+            }
+        }
+    }
+
+    cv::Mat dilatedImage = paddedDemoImage(cv::Range(border, border + height), cv::Range(border, border + width));
+    quickShow(dilatedImage*255, "Dilated Image");
 
 
+    //Compare using cv::dilate()
+    cv::Mat dilatedEllipseKernel;
+    cv::dilate(demoImage, dilatedEllipseKernel, element);
+    cout << dilatedEllipseKernel << endl;
+    quickShow(dilatedEllipseKernel*255, "Dilate Ellipse Kernel");
 
 
     cv::waitKey(0);
@@ -64,3 +82,4 @@ void quickShow(cv::Mat source, std::string windowName) {
     cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
     cv::imshow(windowName, source);
 }
+
