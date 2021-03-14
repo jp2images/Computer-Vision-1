@@ -146,6 +146,49 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MouseAnnotations", "Week 2\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assignment2Annotations", "Week 2\Assignment2Annotations\Assignment2Annotations.vcxproj", "{EAD1ED10-EB12-4FBF-8CD5-B2000015BE19}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assignment3Trackbars", "Week 2\Assignment3Trackbars\Assignment3Trackbars.vcxproj", "{E3AA5551-A526-4468-82C6-398906706B2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week 3", "Week 3", "{B071CEF7-DABD-4991-9155-BAD85ACC20DF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Thresholding", "Week 3\Thresholding\Thresholding.vcxproj", "{93A9210F-71A2-4189-ABED-7C15C36F4D13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Files", "Data Files", "{0E3BB9C8-2E95-463A-9423-F00ABD2C335B}"
+	ProjectSection(SolutionItems) = preProject
+		Week 3\DataFiles\blobDetection.cpp = Week 3\DataFiles\blobDetection.cpp
+		Week 3\DataFiles\CMakeLists.txt = Week 3\DataFiles\CMakeLists.txt
+		Week 3\DataFiles\connectedComponentAnalysis.cpp = Week 3\DataFiles\connectedComponentAnalysis.cpp
+		Week 3\DataFiles\contours.cpp = Week 3\DataFiles\contours.cpp
+		Week 3\DataFiles\dataPath.hpp = Week 3\DataFiles\dataPath.hpp
+		Week 3\DataFiles\erosionDilation.cpp = Week 3\DataFiles\erosionDilation.cpp
+		Week 3\DataFiles\implementationOfMorphologicalOperations.cpp = Week 3\DataFiles\implementationOfMorphologicalOperations.cpp
+		Week 3\DataFiles\openingClosing.cpp = Week 3\DataFiles\openingClosing.cpp
+		Week 3\DataFiles\thresholding.cpp = Week 3\DataFiles\thresholding.cpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{0E2D40B7-5BF5-4812-BF4A-DD369803E772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7CA42CBF-577A-4C7E-97E1-5672C1AA3108}"
+	ProjectSection(SolutionItems) = preProject
+		Week 3\DataFiles\data\images\blob_detection.jpg = Week 3\DataFiles\data\images\blob_detection.jpg
+		Week 3\DataFiles\data\images\closing.png = Week 3\DataFiles\data\images\closing.png
+		Week 3\DataFiles\data\images\Coins.png = Week 3\DataFiles\data\images\Coins.png
+		Week 3\DataFiles\data\images\Coins1.png = Week 3\DataFiles\data\images\Coins1.png
+		Week 3\DataFiles\data\images\Coins2.png = Week 3\DataFiles\data\images\Coins2.png
+		Week 3\DataFiles\data\images\Coins3.png = Week 3\DataFiles\data\images\Coins3.png
+		Week 3\DataFiles\data\images\Coins4.jpg = Week 3\DataFiles\data\images\Coins4.jpg
+		Week 3\DataFiles\data\images\CoinsA.png = Week 3\DataFiles\data\images\CoinsA.png
+		Week 3\DataFiles\data\images\CoinsB.png = Week 3\DataFiles\data\images\CoinsB.png
+		Week 3\DataFiles\data\images\Contour.png = Week 3\DataFiles\data\images\Contour.png
+		Week 3\DataFiles\data\images\Convexity.PNG = Week 3\DataFiles\data\images\Convexity.PNG
+		Week 3\DataFiles\data\images\dilation_example.jpg = Week 3\DataFiles\data\images\dilation_example.jpg
+		Week 3\DataFiles\data\images\erosion_example.jpg = Week 3\DataFiles\data\images\erosion_example.jpg
+		Week 3\DataFiles\data\images\InertiaRatio.jpg = Week 3\DataFiles\data\images\InertiaRatio.jpg
+		Week 3\DataFiles\data\images\opening.png = Week 3\DataFiles\data\images\opening.png
+		Week 3\DataFiles\data\images\sample.jpg = Week 3\DataFiles\data\images\sample.jpg
+		Week 3\DataFiles\data\images\threshold.png = Week 3\DataFiles\data\images\threshold.png
+		Week 3\DataFiles\data\images\truth.png = Week 3\DataFiles\data\images\truth.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -242,6 +285,22 @@ Global
 		{EAD1ED10-EB12-4FBF-8CD5-B2000015BE19}.Release|x64.Build.0 = Release|x64
 		{EAD1ED10-EB12-4FBF-8CD5-B2000015BE19}.Release|x86.ActiveCfg = Release|Win32
 		{EAD1ED10-EB12-4FBF-8CD5-B2000015BE19}.Release|x86.Build.0 = Release|Win32
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Debug|x64.ActiveCfg = Debug|x64
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Debug|x64.Build.0 = Debug|x64
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Debug|x86.ActiveCfg = Debug|Win32
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Debug|x86.Build.0 = Debug|Win32
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Release|x64.ActiveCfg = Release|x64
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Release|x64.Build.0 = Release|x64
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Release|x86.ActiveCfg = Release|Win32
+		{E3AA5551-A526-4468-82C6-398906706B2D}.Release|x86.Build.0 = Release|Win32
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Debug|x64.ActiveCfg = Debug|x64
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Debug|x64.Build.0 = Debug|x64
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Debug|x86.ActiveCfg = Debug|Win32
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Debug|x86.Build.0 = Debug|Win32
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x64.ActiveCfg = Release|x64
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x64.Build.0 = Release|x64
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x86.ActiveCfg = Release|Win32
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -271,6 +330,11 @@ Global
 		{FBCCDAB0-8BF1-4B60-9956-CAA134E2CDCE} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
 		{F0AA15DE-C05D-4385-99C9-367499F85B64} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
 		{EAD1ED10-EB12-4FBF-8CD5-B2000015BE19} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{E3AA5551-A526-4468-82C6-398906706B2D} = {BFBFE6E1-6575-4927-A435-D59A4609BFB1}
+		{93A9210F-71A2-4189-ABED-7C15C36F4D13} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
+		{0E3BB9C8-2E95-463A-9423-F00ABD2C335B} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
+		{0E2D40B7-5BF5-4812-BF4A-DD369803E772} = {0E3BB9C8-2E95-463A-9423-F00ABD2C335B}
+		{7CA42CBF-577A-4C7E-97E1-5672C1AA3108} = {0E2D40B7-5BF5-4812-BF4A-DD369803E772}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}
