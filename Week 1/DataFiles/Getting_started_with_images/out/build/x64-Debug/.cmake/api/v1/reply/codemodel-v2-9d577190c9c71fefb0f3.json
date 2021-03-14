@@ -1,0 +1,122 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Getting_started_with_images",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Color_Images::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Color_Images-Debug-ea72718af31aed571e35.json",
+					"name" : "Color_Images",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Image_as_a_matrix::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Image_as_a_matrix-Debug-8f7a3de8534f4b101ad7.json",
+					"name" : "Image_as_a_matrix",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Image_with_alpha_channel::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Image_with_alpha_channel-Debug-677b2c667bc2ea2927aa.json",
+					"name" : "Image_with_alpha_channel",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Manipulating_Color_Pixels::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Manipulating_Color_Pixels-Debug-41ff0c6c78652857ee3c.json",
+					"name" : "Manipulating_Color_Pixels",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Manipulating_Pixels::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Manipulating_Pixels-Debug-eb63eb480da4767e58cd.json",
+					"name" : "Manipulating_Pixels",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Manipulating_group_of_pixels::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Manipulating_group_of_pixels-Debug-aaa5d3b0b883721f8f94.json",
+					"name" : "Manipulating_group_of_pixels",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Saving_an_image::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Saving_an_image-Debug-bf9935fbbff3c73e39aa.json",
+					"name" : "Saving_an_image",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Splitting_and_merging_channels::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Splitting_and_merging_channels-Debug-8126a2c434032e97f05d.json",
+					"name" : "Splitting_and_merging_channels",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Getting_started_with_images/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Getting_started_with_images"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

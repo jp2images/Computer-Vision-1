@@ -1,0 +1,95 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Mathematical_Operations_on_Images",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "VideoRead::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VideoRead-Debug-8baa3290234885c766e4.json",
+					"name" : "VideoRead",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "VideoWrite::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VideoWrite-Debug-22aff34b9d91119496ab.json",
+					"name" : "VideoWrite",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "adding_a_trackbar_as_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-adding_a_trackbar_as_controller-Debug-a597195686b53b787f4d.json",
+					"name" : "adding_a_trackbar_as_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "using_the_keyboard_as_input_device::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-using_the_keyboard_as_input_device-Debug-204c9c834f19329a5ebb.json",
+					"name" : "using_the_keyboard_as_input_device",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "using_the_mouse_for_annotation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-using_the_mouse_for_annotation-Debug-3a9db22772fb5c10ee5f.json",
+					"name" : "using_the_mouse_for_annotation",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 2/DataFiles/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 2/DataFiles"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

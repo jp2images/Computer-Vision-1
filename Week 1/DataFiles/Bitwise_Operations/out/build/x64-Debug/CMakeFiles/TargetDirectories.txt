@@ -1,0 +1,3 @@
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Bitwise_Operations/out/build/x64-Debug/CMakeFiles/Example.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Bitwise_Operations/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Bitwise_Operations/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

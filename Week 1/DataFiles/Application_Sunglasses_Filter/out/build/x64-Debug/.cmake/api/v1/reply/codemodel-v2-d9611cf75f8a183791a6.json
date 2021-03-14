@@ -1,0 +1,77 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Application_Sunglasses_Filter",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Load_Images::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Load_Images-Debug-dd1ed4d64935fc949e36.json",
+					"name" : "Load_Images",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Using_Arithmetic_Operations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Using_Arithmetic_Operations-Debug-3ec2476e0f3baffd1493.json",
+					"name" : "Using_Arithmetic_Operations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Using_Naive_Replace::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Using_Naive_Replace-Debug-6070b8870d99e233efb3.json",
+					"name" : "Using_Naive_Replace",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

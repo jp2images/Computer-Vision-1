@@ -1,0 +1,86 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Mathematical_Operations_on_Images",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Brightness_Enhancement::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Brightness_Enhancement-Debug-3d0b907852646af45acf.json",
+					"name" : "Brightness_Enhancement",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Contrast_Enhancement::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Contrast_Enhancement-Debug-b3e10eb5702e20c988a6.json",
+					"name" : "Contrast_Enhancement",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Datatype_Conversion::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Datatype_Conversion-Debug-7422e85b84ef760e5074.json",
+					"name" : "Datatype_Conversion",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Pitfalls_of_using_uint8::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Pitfalls_of_using_uint8-Debug-ad31157578327de50e07.json",
+					"name" : "Pitfalls_of_using_uint8",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Mathematical_Operations_on_Images/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Mathematical_Operations_on_Images"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

@@ -1,0 +1,95 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Basic_Image_Operations",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Copying_a_region_to_another::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Copying_a_region_to_another-Debug-b98876efd8e19ac7bb38.json",
+					"name" : "Copying_a_region_to_another",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Create_new_images::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Create_new_images-Debug-192b4ac1d0e13c7ba166.json",
+					"name" : "Create_new_images",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Creating_an_image_mask::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Creating_an_image_mask-Debug-bb02c2226f90d71b000f.json",
+					"name" : "Creating_an_image_mask",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Cropping_an_Image_Section::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Cropping_an_Image_Section-Debug-769599a513e162d4d05d.json",
+					"name" : "Cropping_an_Image_Section",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Resizing_an_image::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Resizing_an_image-Debug-9c7113e4de98b43f8802.json",
+					"name" : "Resizing_an_image",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

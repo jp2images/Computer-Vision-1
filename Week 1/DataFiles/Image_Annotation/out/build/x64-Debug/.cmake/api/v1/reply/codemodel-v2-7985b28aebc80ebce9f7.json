@@ -1,0 +1,104 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Image_Annotation",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Drawing_Circles::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drawing_Circles-Debug-5139110c820a851803fe.json",
+					"name" : "Drawing_Circles",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Drawing_Ellipse::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drawing_Ellipse-Debug-231b91b19b5f5dca5512.json",
+					"name" : "Drawing_Ellipse",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Drawing_Lines::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drawing_Lines-Debug-8d3dbc2a52ec1d44f6dd.json",
+					"name" : "Drawing_Lines",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Drawing_Rectangles::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drawing_Rectangles-Debug-4797b11edb3e4d845786.json",
+					"name" : "Drawing_Rectangles",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Drawing_Text::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Drawing_Text-Debug-9aa14be682140c40a349.json",
+					"name" : "Drawing_Text",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Intro::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Intro-Debug-62d403675bc25544ab25.json",
+					"name" : "Intro",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Image_Annotation/out/build/x64-Debug",
+		"source" : "D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Image_Annotation"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

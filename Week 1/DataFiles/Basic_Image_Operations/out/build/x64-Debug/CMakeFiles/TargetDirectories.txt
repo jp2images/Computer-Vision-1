@@ -1,0 +1,7 @@
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/Copying_a_region_to_another.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/Creating_an_image_mask.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/Create_new_images.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/Cropping_an_Image_Section.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/Resizing_an_image.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Basic_Image_Operations/out/build/x64-Debug/CMakeFiles/edit_cache.dir

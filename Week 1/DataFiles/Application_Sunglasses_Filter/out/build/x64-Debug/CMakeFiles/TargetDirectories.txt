@@ -1,0 +1,5 @@
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug/CMakeFiles/Load_Images.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug/CMakeFiles/Using_Arithmetic_Operations.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug/CMakeFiles/Using_Naive_Replace.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+D:/source/repos/OpenCV.org/Computer Vision 1/Week 1/DataFiles/Application_Sunglasses_Filter/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
