@@ -7,7 +7,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 
-#include "dataPath.hpp"
+//#include "dataPath.hpp"
 
 using namespace std;
 using namespace cv;
@@ -22,6 +22,7 @@ const int ESC_KEY = 27;
 const int C_KEY = 99;
 
 int main() {
+    std::string DATA_PATH = "../";
     const string mouseWindow = "Mouse Window";
     string croppedImageName = DATA_PATH + "cropped.jpg";
 
