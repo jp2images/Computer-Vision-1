@@ -193,6 +193,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ErosionDilation", "Week 3\E
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Morphology", "Week 3\Morphology\Morphology.vcxproj", "{36685655-5147-4966-9A5B-4A1800FA426C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssignmentSe", "Week 3\AssignmentSe\AssignmentSe.vcxproj", "{3EF8A72C-3058-4815-8B78-08257AA38F77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -321,6 +323,14 @@ Global
 		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x64.Build.0 = Release|x64
 		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x86.ActiveCfg = Release|Win32
 		{36685655-5147-4966-9A5B-4A1800FA426C}.Release|x86.Build.0 = Release|Win32
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Debug|x64.ActiveCfg = Debug|x64
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Debug|x64.Build.0 = Debug|x64
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Debug|x86.ActiveCfg = Debug|Win32
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Debug|x86.Build.0 = Debug|Win32
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Release|x64.ActiveCfg = Release|x64
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Release|x64.Build.0 = Release|x64
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Release|x86.ActiveCfg = Release|Win32
+		{3EF8A72C-3058-4815-8B78-08257AA38F77}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,6 +367,7 @@ Global
 		{7CA42CBF-577A-4C7E-97E1-5672C1AA3108} = {0E2D40B7-5BF5-4812-BF4A-DD369803E772}
 		{AD141224-72C9-4BF6-A926-48E94C878C83} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 		{36685655-5147-4966-9A5B-4A1800FA426C} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
+		{3EF8A72C-3058-4815-8B78-08257AA38F77} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}
