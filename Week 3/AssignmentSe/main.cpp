@@ -56,15 +56,19 @@ int main() {
 
     double minVal, maxVal;
 
+    int vidHeight = paddedDilatedImage.size().height;
+    int vidWidth = paddedDilatedImage.size().width;
     int videoFPS = 10;
 
     cv::VideoWriter videoOut("dilationScratch.mp4", 
         //cv::VideoWriter::fourcc('M', 'P', 'G', '4'),
+        //videoFPS, cv::Size(height + 2, width + 2));
         cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
-        videoFPS, cv::Size(height+2, width+2));
+        videoFPS, cv::Size(vidHeight, vidWidth));
+
 
     if (!videoOut.isOpened()) {
-        cout << "Video Writer is not OPEN" << endl << endl;
+        cout << endl << "Video Writer is not OPEN" << endl << endl;
         return -1;
     }
 
@@ -79,18 +83,19 @@ int main() {
                 mask.copyTo(paddedDemoImage(cv::Range(h_i - border, h_i + border + 1),
                     cv::Range(w_i - border, w_i + border + 1)));
 
-                videoOut.write(paddedDemoImage);
+
+                videoOut.write(paddedDemoImage * 255);
+
                 cv::imshow("video", paddedDemoImage * 255);
-                cv::waitKey(100);
-                videoOut.write(paddedDilatedImage);
+                cv::waitKey(100);                
             }
             cv::imshow("video", paddedDemoImage * 255);
             cv::waitKey(10);
-        }
+        }        
     }            
+    videoOut.release();
     cv::waitKey(0);
     cv::destroyWindow("video");
-    videoOut.release();
     return 0;
 }
 
