@@ -26,7 +26,6 @@ int main() {
     demoImage.at<uchar>(9, 0) = 1;
     demoImage.at<uchar>(8, 9) = 1;
     demoImage.at<uchar>(2, 2) = 1;
-
     demoImage(cv::Range(5, 8), cv::Range(5, 8)).setTo(1);
     //cout << demoImage << endl << endl;;
     //quickShow(demoImage*255);
@@ -52,30 +51,39 @@ int main() {
     cv::Mat paddedDilatedImage = paddedDemoImage.clone();
     cv::Mat mask;
     cv::Mat resizedFrame;
+    cv::Mat imageColored;
 
-    double minVal, maxVal;
+    cv::Rect rectImage;
 
     string videoName = "dilationScratch.avi";
     int vidHeight = paddedDilatedImage.size().height;
     int vidWidth = paddedDilatedImage.size().width;
-    int videoFPS = 5;
-
+    int videoFPS = 10;
 
     cv::VideoWriter videoOut(videoName,
         cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
-        videoFPS, cv::Size(vidHeight, vidWidth), false);
+        //videoFPS, cv::Size(vidHeight, vidWidth), false);
+        videoFPS, cv::Size(50, 50), false);
 
     if (!videoOut.isOpened()) {
 
-        cout << endl << "Video Writer is not OPEN" << endl << endl;
+        std::cout << endl << "Video Writer is not OPEN" << endl << endl;
         return -1;
     }
 
-    //quickShow(paddedDemoImage * 255);
-    //quickShow(element * 255);
-    cv::Mat bigPicture;
+    cv::resize(paddedDilatedImage * 255, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_CUBIC); 
+    //Write a few frames of the original image before we start dilating.
+    for (int x = 0; x < 5; x++) {
+        videoOut.write(resizedFrame);
+    }
 
-    videoOut.write(paddedDemoImage * 255);
+    int x = demoImage.size().height;
+    int y = demoImage.size().width;
+    cv::Rect originalImageRect(1, 1, x, y);
+
+    cv::Mat imageCropped;
+
+    //Begin dilation of the image.
     for (int h_i = border; h_i < height + border; h_i++) {
         for (int w_i = border; w_i < width + border; w_i++) {
             if (demoImage.at<uchar>(h_i - border, w_i - border)) {
@@ -86,20 +94,17 @@ int main() {
                 //Copy the mask back to the image
                 mask.copyTo(paddedDilatedImage(cv::Range(h_i - border, h_i + border + 1),
                     cv::Range(w_i - border, w_i + border + 1)));
-
-                cv::resize(paddedDilatedImage, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_CUBIC);
-                videoOut.write(resizedFrame * 255);
-                cv::imshow("video", resizedFrame * 255);
-
-                //videoOut.write(paddedDilatedImage * 255);
-                //videoOut.write(paddedDilatedImage * 255);
-                //cv::imshow("video", paddedDilatedImage * 255);
-                //cv::imshow("video", paddedDilatedImage * 255);
             }
-            cv::waitKey(100);                
+            imageCropped = paddedDilatedImage(originalImageRect);
+            cv::resize(imageCropped, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_NEAREST);
+
+            //Make the image size larger
+            cv::cvtColor(resizedFrame, imageColored, cv::COLOR_GRAY2BGR);
+            videoOut.write(imageColored * 255);
+            cv::imshow("video", imageColored * 255);
+            cv::waitKey(50);
         } 
     }      
-    videoOut.write(paddedDilatedImage * 255);
 
     videoOut.release();
     cv::waitKey(0);
@@ -109,13 +114,13 @@ int main() {
     cv::VideoCapture myVid(videoName);
 
     if (!myVid.isOpened()) {
-        cout << endl << "Error opening video stream or file" << endl << endl;
+        std::cout << std::endl << "Error opening video stream or file" << std::endl << std::endl;
         return -1;
     }
     cv::Mat frame;
     int videoWidth = myVid.get(cv::CAP_PROP_FRAME_WIDTH);
     int videoHeight = myVid.get(cv::CAP_PROP_FRAME_HEIGHT);
-    cout << endl << endl << "Width: " << videoWidth << " Height: " << videoHeight << endl << endl;
+    std::cout << std::endl << std::endl << "Width: " << videoWidth << " Height: " << videoHeight << std::endl << std::endl;
     //Start at a different position of the video
     myVid.set(cv::CAP_PROP_POS_MSEC, 0);
 
@@ -125,8 +130,8 @@ int main() {
         if (frame.empty()) {
             break;
         }
-        cv::imshow("Frame", frame);
-        cv::waitKey(500);
+        cv::imshow("Playback", frame);
+        //cv::waitKey(50);
     }
 
     return 0;
