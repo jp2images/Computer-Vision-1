@@ -117,7 +117,8 @@ int main() {
                 cv::minMaxLoc(paddedDemoImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)), &minVal, NULL, NULL, NULL, element);
 
                 //Copy the mask back to the image
-                paddedErodedImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)) = minVal;                
+                //paddedErodedImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)) = minVal;
+                paddedErodedImage(cv::Range(h_i, h_i + 1), cv::Range(w_i, w_i + 1)) = minVal;
             //}
 
             imageCropped = paddedErodedImage(cv::Rect(1, 1, x, y));
