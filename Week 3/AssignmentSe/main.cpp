@@ -70,32 +70,32 @@ int main() {
     cv::Mat imageCropped;
 
     //Begin dilation of the image.
-    //for (int h_i = border; h_i < height + border; h_i++) {
-    //    for (int w_i = border; w_i < width + border; w_i++) {
-    //        if (demoImage.at<uchar>(h_i - border, w_i - border)) {
-    //            //Or the structuring element with the the image and write the result to the mask.
-    //            cv::bitwise_or(paddedDilatedImage(
-    //                cv::Range(h_i - border, h_i + border + 1),
-    //                cv::Range(w_i - border, w_i + border + 1)), element, mask);
-    //            //Copy the mask back to the image
-    //            mask.copyTo(paddedDilatedImage(cv::Range(h_i - border, h_i + border + 1),
-    //                cv::Range(w_i - border, w_i + border + 1)));
-    //        }
-    //        imageCropped = paddedDilatedImage(cv::Rect(1, 1, x, y));
-    //        cv::resize(imageCropped * 255, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_NEAREST);
-    //        cv::cvtColor(resizedFrame, resizedFrame, cv::COLOR_GRAY2BGR);
-    //        videoDilationOut.write(resizedFrame);
-    //        cv::imshow("Video Dilation", resizedFrame);
-    //        cv::waitKey(50);
-    //    } 
-    //}      
+    for (int h_i = border; h_i < height + border; h_i++) {
+        for (int w_i = border; w_i < width + border; w_i++) {
+            if (demoImage.at<uchar>(h_i - border, w_i - border)) {
+                //Or the structuring element with the the image and write the result to the mask.
+                cv::bitwise_or(paddedDilatedImage(
+                    cv::Range(h_i - border, h_i + border + 1),
+                    cv::Range(w_i - border, w_i + border + 1)), element, mask);
+                //Copy the mask back to the image
+                mask.copyTo(paddedDilatedImage(cv::Range(h_i - border, h_i + border + 1),
+                    cv::Range(w_i - border, w_i + border + 1)));
+            }
+            imageCropped = paddedDilatedImage(cv::Rect(1, 1, x, y));
+            cv::resize(imageCropped * 255, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_NEAREST);
+            cv::cvtColor(resizedFrame, resizedFrame, cv::COLOR_GRAY2BGR);
+            videoDilationOut.write(resizedFrame);
+            cv::imshow("Video Dilation", resizedFrame);
+            cv::waitKey(50);
+        } 
+    }      
 
-    //videoDilationOut.release();
-    //cv::waitKey(0);
-    //cv::destroyWindow("Video Dilation");
+    videoDilationOut.release();
+    cv::waitKey(0);
+    cv::destroyWindow("Video Dilation");
 
 
-    cv::Mat erosionMask = cv::Mat::zeros(cv::Size(3, 3), CV_8U);
+    cv::Mat erosionMask;
     cv::Mat paddedErodedImage = paddedDemoImage.clone();
     string videoErosionName = "erosionScratch.avi";
 
@@ -113,35 +113,19 @@ int main() {
     //Begin erosion of the image.
     for (int h_i = border; h_i < height + border; h_i++) {
         for (int w_i = border; w_i < width + border; w_i++) {
-            if (demoImage.at<uchar>(h_i - border, w_i - border)) {
-
-                cv::Mat roi = paddedErodedImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1));
-
-                //AND the structuring element with the the image and write the result to the mask.
-                //cv::bitwise_and(paddedDemoImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)), element, erosionMask);
-                cv::bitwise_and(roi, element, erosionMask);
-                cv::minMaxLoc(erosionMask, &minVal, &maxVal);
-               
-                //cout << "Max:" << maxVal << " Row: " << h_i - border << " Column: " << w_i - border << endl;
-                cout << "Erosion Mask: " << endl << erosionMask << endl;
-                //cout << "Element" << endl << element << endl << endl;
-                //cout << paddedErodedImage << endl << endl;
+            //if (demoImage.at<uchar>(h_i - border, w_i - border)) {
+                cv::minMaxLoc(paddedDemoImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)), &minVal, NULL, NULL, NULL, element);
 
                 //Copy the mask back to the image
-                //paddedErodedImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)) = maxVal;
-
-                paddedErodedImage.at<uchar>(h_i, w_i) = maxVal;
-
-                //cv::waitKey(0);
-            }
-
+                paddedErodedImage(cv::Range(h_i - border, h_i + border + 1), cv::Range(w_i - border, w_i + border + 1)) = minVal;                
+            //}
 
             imageCropped = paddedErodedImage(cv::Rect(1, 1, x, y));
             cv::resize(imageCropped * 255, resizedFrame, cv::Size(50, 50), 0, 0, cv::INTER_NEAREST);
             cv::cvtColor(resizedFrame, resizedFrame, cv::COLOR_GRAY2BGR);
-            //videoErosionOut.write(resizedFrame);
+            videoErosionOut.write(resizedFrame);
             cv::imshow("Video Erosion", resizedFrame);
-            //cv::waitKey(20);
+            cv::waitKey(20);
         }
     }
 
@@ -151,29 +135,52 @@ int main() {
 
 
 
-    //Play the video back
-    //cv::VideoCapture myVid(videoDilationName);
+    //Play the videos back
+    cv::VideoCapture myVid(videoDilationName);
 
-    //if (!myVid.isOpened()) {
-    //    std::cout << std::endl << "Error opening video stream or file" << std::endl << std::endl;
-    //    return -1;
-    //}
-    //cv::Mat frame;
-    //int videoWidth = myVid.get(cv::CAP_PROP_FRAME_WIDTH);
-    //int videoHeight = myVid.get(cv::CAP_PROP_FRAME_HEIGHT);
-    //std::cout << std::endl << std::endl << "Width: " << videoWidth << " Height: " << videoHeight << std::endl << std::endl;
-    ////Start at a different position of the video
-    //myVid.set(cv::CAP_PROP_POS_MSEC, 0);
+    if (!myVid.isOpened()) {
+        std::cout << std::endl << "Error opening video stream or file" << std::endl << std::endl;
+        return -1;
+    }
+    cv::Mat frame;
+    int videoWidth = myVid.get(cv::CAP_PROP_FRAME_WIDTH);
+    int videoHeight = myVid.get(cv::CAP_PROP_FRAME_HEIGHT);
+    std::cout << std::endl << std::endl << "Width: " << videoWidth << " Height: " << videoHeight << std::endl << std::endl;
+    //Start at a different position of the video
+    myVid.set(cv::CAP_PROP_POS_MSEC, 0);
 
-    //while (myVid.isOpened()) {
-    //    myVid >> frame;
+    while (myVid.isOpened()) {
+        myVid >> frame;
 
-    //    if (frame.empty()) {
-    //        break;
-    //    }
-    //    cv::imshow("Playback", frame);
-    //    //cv::waitKey(50);
-    //}
+        if (frame.empty()) {
+            break;
+        }
+        cv::imshow("Playback", frame);
+        //cv::waitKey(50);
+    }
+
+
+    cv::VideoCapture myErodeVid(videoErosionName);
+
+    if (!myVid.isOpened()) {
+        cout << endl << "Error opening video stream or file" << endl << endl;
+        return -1;
+    }
+    videoWidth = myErodeVid.get(cv::CAP_PROP_FRAME_WIDTH);
+    videoHeight = myErodeVid.get(cv::CAP_PROP_FRAME_HEIGHT);
+    cout << endl << endl << "Width: " << videoWidth << " Height: " << videoHeight << endl << endl;
+    //Start at a different position of the video
+    myErodeVid.set(cv::CAP_PROP_POS_MSEC, 0);
+
+    while (myErodeVid.isOpened()) {
+        myErodeVid >> frame;
+
+        if (frame.empty()) {
+            break;
+        }
+        cv::imshow("Playback", frame);
+        //cv::waitKey(50);
+    }
 
     return 0;
 }
