@@ -23,6 +23,7 @@ int main() {
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create();
     vector<cv::KeyPoint> keypoints;
     detector->detect(img, keypoints);
+    cout << "Blob count: " << keypoints.size() << endl << endl;
 
     int x, y;
     int radius;
@@ -82,6 +83,7 @@ int main() {
     cv::Ptr<cv::SimpleBlobDetector> custDetector = cv::SimpleBlobDetector::create(params);
     //vector<cv::KeyPoint> keypoints;
     custDetector->detect(img, keypoints);
+    cout << "Blob count: " << keypoints.size() << endl << endl;
 
     //int x, y;
     //int radius;

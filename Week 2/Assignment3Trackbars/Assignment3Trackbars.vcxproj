@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainAssignment3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataPath.hpp" />

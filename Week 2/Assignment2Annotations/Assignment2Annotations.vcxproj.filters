@@ -9,7 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="mainAssignment2.cpp">
       <Filter>SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>

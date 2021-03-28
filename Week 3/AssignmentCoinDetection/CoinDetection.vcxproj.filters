@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mainAssignmentSe.cpp">
+    <ClCompile Include="mainCoinDetection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

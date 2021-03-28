@@ -203,6 +203,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Contours", "Week 3\Contours
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlobDetection", "Week 3\BlobDetection\BlobDetection.vcxproj", "{FD136354-F2E2-41D9-9CE4-B3899EB259FA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoinDetection", "Week 3\AssignmentCoinDetection\CoinDetection.vcxproj", "{C122E016-B8BD-4849-B113-A5A1020FDD42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -371,6 +373,14 @@ Global
 		{FD136354-F2E2-41D9-9CE4-B3899EB259FA}.Release|x64.Build.0 = Release|x64
 		{FD136354-F2E2-41D9-9CE4-B3899EB259FA}.Release|x86.ActiveCfg = Release|Win32
 		{FD136354-F2E2-41D9-9CE4-B3899EB259FA}.Release|x86.Build.0 = Release|Win32
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Debug|x64.ActiveCfg = Debug|x64
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Debug|x64.Build.0 = Debug|x64
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Debug|x86.ActiveCfg = Debug|Win32
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Debug|x86.Build.0 = Debug|Win32
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Release|x64.ActiveCfg = Release|x64
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Release|x64.Build.0 = Release|x64
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Release|x86.ActiveCfg = Release|Win32
+		{C122E016-B8BD-4849-B113-A5A1020FDD42}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -412,6 +422,7 @@ Global
 		{EA4119A2-9A54-4B7F-B37D-DD297EAD6561} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 		{76B5BD5F-E715-49CA-A4E7-13EFB4DE636A} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 		{FD136354-F2E2-41D9-9CE4-B3899EB259FA} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
+		{C122E016-B8BD-4849-B113-A5A1020FDD42} = {B071CEF7-DABD-4991-9155-BAD85ACC20DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA4DADC1-8B18-48E3-8C54-5B12A05070B0}

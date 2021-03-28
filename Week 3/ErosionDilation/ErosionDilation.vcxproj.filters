@@ -9,7 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="mainErodeDilate.cpp">
       <Filter>SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,7 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="mainMorphology.cpp">
       <Filter>SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>
