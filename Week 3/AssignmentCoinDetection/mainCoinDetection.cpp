@@ -14,24 +14,29 @@
 using namespace std;
 //using namespace cv;
 
+void quickShow(cv::Mat, std::string = "Quick Show");
+
 int main() {
     string imagePath = DATA_PATH + "images/CoinsA.png";
     cv::Mat image = cv::imread(imagePath);
     int imageWidth = image.size().width;
     int imageHeight = image.size().height;
     cout << "Image Dimensions: W" << imageWidth << " x H" << imageHeight << endl << endl;
-    cv::imshow("Original", image);
-    cv::waitKey(0);
-    cv::destroyWindow("Original");
+    quickShow(image, "Original");
+    //cv::imshow("Original", image);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Original");
 
     //Make a copy so we don't mess up the original
     cv::Mat imageCopy = image.clone();
 
     cv::Mat imageGray;
     cv::cvtColor(imageCopy, imageGray, cv::COLOR_BGR2GRAY);
-    cv::imshow("Monochrome", imageGray);
-    cv::waitKey(0);
-    cv::destroyWindow("Monochrome");
+    quickShow(imageGray, "Monochrome");
+
+    //cv::imshow("Monochrome", imageGray);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Monochrome");
 
     //Split the image into channels
     cv::Mat imageB, imageG, imageR;
@@ -50,21 +55,24 @@ int main() {
 
     cv::Mat thresholdImageGray;
     cv::threshold(imageGray, thresholdImageGray, 70, 255, cv::THRESH_BINARY_INV);
-    cv::imshow("Image Basic Gray Threshold", thresholdImageGray);
-    cv::waitKey(0);
-    cv::destroyWindow("Image Basic Gray Threshold");
+    quickShow(thresholdImageGray, "Image Basic Gray Threshold");
+    //cv::imshow("Image Basic Gray Threshold", thresholdImageGray);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image Basic Gray Threshold");
 
     cv::Mat thresholdImageG;
     cv::threshold(imageG, thresholdImageG, 60, 255, cv::THRESH_BINARY_INV);
-    cv::imshow("Image Green Threshold", thresholdImageG);
-    cv::waitKey(0);
-    cv::destroyWindow("Image Green Threshold");
+    quickShow(thresholdImageG, "Image Green Threshold");
+    //cv::imshow("Image Green Threshold", thresholdImageG);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image Green Threshold");
 
     cv::Mat thresholdImageBlue;
     cv::threshold(imageB, thresholdImageBlue, 70, 255, cv::THRESH_BINARY_INV);
-    cv::imshow("Image Blue Threshold", thresholdImageBlue);
-    cv::waitKey(0);
-    cv::destroyWindow("Image Blue Threshold");
+    quickShow(thresholdImageBlue, "Image Blue Threshold");
+    //cv::imshow("Image Blue Threshold", thresholdImageBlue);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image Blue Threshold");
 
 #pragma region Some testing
     //cv::Mat blurredImage;
@@ -92,34 +100,59 @@ int main() {
 
     cv::Mat imageErode;
     cv::erode(thresholdImageG, imageErode, element, cv::Point(-1, -1), 1);
-    cv::imshow("Image erode 1 iteration", imageErode);
-    cv::waitKey(0);
-    cv::destroyWindow("Image erode 1 iteration");
+    quickShow(imageErode, "Image erode 1 iteration");
+    //cv::imshow("Image erode 1 iteration", imageErode);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image erode 1 iteration");
 
 
-
-    //Morphalogical operations.
+    //*************************************************************************
+    //*************************************************************************
+    // Morphalogical operations.
+    //*************************************************************************
+    //*************************************************************************
     cv::Mat openingImage;
     cv::morphologyEx(thresholdImageG, openingImage, cv::MORPH_OPEN, element, cv::Point(-1, -1), 2);
-    cv::imshow("Image Opening", openingImage);
+    quickShow(openingImage, "Image Opening");
+    //cv::imshow("Image Opening", openingImage);
     //cv::waitKey(0);
-    cv::destroyWindow("Image Blue Threshold");
+    //cv::destroyWindow("Image Blue Threshold");
 
     // seperately 
 
-    cv::Mat imageErode;
+    //cv::Mat imageErode;
     cv::erode(openingImage, imageErode, element, cv::Point(-1, -1), 1);
-    cv::imshow("Image open and erode", imageErode);
-    cv::waitKey(0);
-    cv::destroyWindow("Image Blue Threshold");
+    quickShow(imageErode, "Image erode after opening");
+    //cv::imshow("Image open and erode", imageErode);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image Blue Threshold");
 
-    //
+    // WINNER WINNER WINNER
     cv::Mat closingAfterErodeImage;
     cv::Mat closeEoredSe = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(4, 4));
     cv::morphologyEx(imageErode, closingAfterErodeImage, cv::MORPH_CLOSE, closeEoredSe, cv::Point(-1, -1), 2);
-    cv::imshow("Image Close After Erode", closingAfterErodeImage);
-    cv::waitKey(0);
-    cv::destroyWindow("Image Blue Threshold");
+    quickShow(closingAfterErodeImage, "Image Close After Erode");
+    //cv::imshow("Image Close After Erode", closingAfterErodeImage);
+    //cv::waitKey(0);
+    //cv::destroyWindow("Image Blue Threshold");
+
+
+
+
+    //*******************************************************
+    //*******************************************************
+    //Copied from the jupyter notebook
+    cv::Mat openAndCloseImage;
+    element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
+    cv::morphologyEx(openingImage, openAndCloseImage, cv::MORPH_CLOSE, element, cv::Point(-1, -1), 2);
+    quickShow(openAndCloseImage, "Image Close");
+
+    //erode the image
+    cv::Mat fillCoinsImage;
+    cv::erode(openAndCloseImage, fillCoinsImage, element, cv::Point(-1, -1), 2);
+    quickShow(fillCoinsImage, "Image Eroded after a close");
+
+
 
 
     //Setup a blob detector with default parameters
@@ -180,4 +213,13 @@ int main() {
     cv::waitKey(0);
 
     return 0;
+}
+
+
+
+void quickShow(cv::Mat source, std::string windowName) { //Default parameter is in the prototype/forward declaration.
+    cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
+    cv::imshow(windowName, source);
+    cv::waitKey(0);
+    cv::destroyWindow(windowName);
 }
