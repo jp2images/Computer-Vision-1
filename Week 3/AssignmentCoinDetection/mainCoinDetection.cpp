@@ -23,20 +23,13 @@ int main() {
     int imageHeight = image.size().height;
     cout << "Image Dimensions: W" << imageWidth << " x H" << imageHeight << endl << endl;
     quickShow(image, "Original");
-    //cv::imshow("Original", image);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Original");
 
     //Make a copy so we don't mess up the original
     cv::Mat imageCopy = image.clone();
 
     cv::Mat imageGray;
     cv::cvtColor(imageCopy, imageGray, cv::COLOR_BGR2GRAY);
-    quickShow(imageGray, "Monochrome");
-
-    //cv::imshow("Monochrome", imageGray);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Monochrome");
+    //quickShow(imageGray, "Monochrome");
 
     //Split the image into channels
     cv::Mat imageB, imageG, imageR;
@@ -55,44 +48,31 @@ int main() {
 
     cv::Mat thresholdImageGray;
     cv::threshold(imageGray, thresholdImageGray, 70, 255, cv::THRESH_BINARY_INV);
-    quickShow(thresholdImageGray, "Image Basic Gray Threshold");
-    //cv::imshow("Image Basic Gray Threshold", thresholdImageGray);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Basic Gray Threshold");
+    //quickShow(thresholdImageGray, "Image Basic Gray Threshold");
 
     cv::Mat thresholdImageG;
     cv::threshold(imageG, thresholdImageG, 60, 255, cv::THRESH_BINARY_INV);
-    quickShow(thresholdImageG, "Image Green Threshold");
-    //cv::imshow("Image Green Threshold", thresholdImageG);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Green Threshold");
+    //quickShow(thresholdImageG, "Image Green Threshold");
 
     cv::Mat thresholdImageBlue;
     cv::threshold(imageB, thresholdImageBlue, 70, 255, cv::THRESH_BINARY_INV);
-    quickShow(thresholdImageBlue, "Image Blue Threshold");
-    //cv::imshow("Image Blue Threshold", thresholdImageBlue);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Blue Threshold");
+    //quickShow(thresholdImageBlue, "Image Blue Threshold");
 
 #pragma region Some testing
     //cv::Mat blurredImage;
     //cv::GaussianBlur(imageG, blurredImage, cv::Size(11, 11), 0.8 );
-    //cv::imshow("Image Blurred", blurredImage);
-    //cv::waitKey(0);
+    //quickShow(blurredImage, "Image Blurred");
     
     //cv::Mat thresholdblurredImage;
     //cv::threshold(blurredImage, thresholdblurredImage, 80, 255, cv::THRESH_BINARY_INV);
-    //cv::imshow("Image Blurred Threshold", thresholdblurredImage);
-    //cv::waitKey(0);
+    //quickShow(thresholdblurredImage, "Image Blurred Threshold");
 
     //cv::Mat imageMedian;
     //cv::medianBlur(imageG, imageMedian, 11);
-    //cv::imshow("Image Median Blur", imageMedian);
-    //cv::waitKey(0);
+    //quickShow(imageMedian, "Image Median Blur");
 
     //cv::threshold(imageMedian, thresholdblurredImage, 60, 255, cv::THRESH_BINARY_INV);
-    //cv::imshow("Image Median Blurred Threshold", thresholdblurredImage);
-    //cv::waitKey(0);
+    //quickShow(thresholdblurredImage, "Image Median Blurred Threshold");
 #pragma endregion
 
     cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
@@ -100,10 +80,7 @@ int main() {
 
     cv::Mat imageErode;
     cv::erode(thresholdImageG, imageErode, element, cv::Point(-1, -1), 1);
-    quickShow(imageErode, "Image erode 1 iteration");
-    //cv::imshow("Image erode 1 iteration", imageErode);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image erode 1 iteration");
+    //quickShow(imageErode, "Image erode 1 iteration");
 
 
     //*************************************************************************
@@ -113,28 +90,19 @@ int main() {
     //*************************************************************************
     cv::Mat openingImage;
     cv::morphologyEx(thresholdImageG, openingImage, cv::MORPH_OPEN, element, cv::Point(-1, -1), 2);
-    quickShow(openingImage, "Image Opening");
-    //cv::imshow("Image Opening", openingImage);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Blue Threshold");
+    //quickShow(openingImage, "Image Opening");
 
     // seperately 
 
     //cv::Mat imageErode;
     cv::erode(openingImage, imageErode, element, cv::Point(-1, -1), 1);
-    quickShow(imageErode, "Image erode after opening");
-    //cv::imshow("Image open and erode", imageErode);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Blue Threshold");
+    //quickShow(imageErode, "Image erode after opening");
 
     // WINNER WINNER WINNER
     cv::Mat closingAfterErodeImage;
     cv::Mat closeEoredSe = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(4, 4));
     cv::morphologyEx(imageErode, closingAfterErodeImage, cv::MORPH_CLOSE, closeEoredSe, cv::Point(-1, -1), 2);
     quickShow(closingAfterErodeImage, "Image Close After Erode");
-    //cv::imshow("Image Close After Erode", closingAfterErodeImage);
-    //cv::waitKey(0);
-    //cv::destroyWindow("Image Blue Threshold");
 
 
 
@@ -145,14 +113,12 @@ int main() {
     cv::Mat openAndCloseImage;
     element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
     cv::morphologyEx(openingImage, openAndCloseImage, cv::MORPH_CLOSE, element, cv::Point(-1, -1), 2);
-    quickShow(openAndCloseImage, "Image Close");
+    //quickShow(openAndCloseImage, "Image Close");
 
     //erode the image
     cv::Mat fillCoinsImage;
     cv::erode(openAndCloseImage, fillCoinsImage, element, cv::Point(-1, -1), 2);
-    quickShow(fillCoinsImage, "Image Eroded after a close");
-
-
+    //quickShow(fillCoinsImage, "Image Eroded after a close");
 
 
     //Setup a blob detector with default parameters
@@ -199,18 +165,16 @@ int main() {
         y = (int)keyPt.y;
 
         //mark the center in black
-        cv::circle(closingAfterErodeImage, cv::Point(x, y), 5, cv::Scalar(0, 0, 0), -1);
+        cv::circle(image, cv::Point(x, y), 5, cv::Scalar(0, 0, 0), -1);
 
         //get the radius
         diameter = k.size;
         radius = (int)diameter / 2.0;
 
         //mark the blob in green
-        cv::circle(closingAfterErodeImage, cv::Point(x, y), radius, cv::Scalar(0, 255, 0), 2);
+        cv::circle(image, cv::Point(x, y), radius, cv::Scalar(0, 255, 0), 5);
     }
-
-    cv::imshow("Filtered blobs", closingAfterErodeImage);
-    cv::waitKey(0);
+    quickShow(image, "Filtered blobs");
 
     return 0;
 }
