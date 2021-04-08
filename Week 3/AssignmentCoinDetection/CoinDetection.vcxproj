@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mainCoinDetection.cpp" />
+    <ClCompile Include="startercode.0\submission.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataPath.hpp" />

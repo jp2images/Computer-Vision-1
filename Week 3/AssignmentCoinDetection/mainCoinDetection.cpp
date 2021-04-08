@@ -17,6 +17,8 @@ using namespace std;
 void quickShow(cv::Mat, std::string = "Quick Show");
 
 int main() {
+    //Assignment Part A
+    //STEP 1: Read the image
     string imagePath = DATA_PATH + "images/CoinsA.png";
     cv::Mat image = cv::imread(imagePath);
     int imageWidth = image.size().width;
@@ -27,11 +29,12 @@ int main() {
     //Make a copy so we don't mess up the original
     cv::Mat imageCopy = image.clone();
 
+    //STEP 2.1: Covert image to gray scale
     cv::Mat imageGray;
     cv::cvtColor(imageCopy, imageGray, cv::COLOR_BGR2GRAY);
     //quickShow(imageGray, "Monochrome");
 
-    //Split the image into channels
+    //STEP 2.2: Split the image into R,G,B channels
     cv::Mat imageB, imageG, imageR;
     cv::Mat imageChannels[3];
     cv::split(imageCopy, imageChannels);
@@ -45,20 +48,26 @@ int main() {
     cv::waitKey(0);
     cv::destroyAllWindows();
 
+    //STEP 3.1: Perform the Thresholding
+    cv::Mat threshold70ImageGray;
+    cv::threshold(imageGray, threshold70ImageGray, 70, 255, cv::THRESH_BINARY_INV);
+    quickShow(threshold70ImageGray, "Image Basic Gray Threshold 70");
 
-    cv::Mat thresholdImageGray;
-    cv::threshold(imageGray, thresholdImageGray, 70, 255, cv::THRESH_BINARY_INV);
-    //quickShow(thresholdImageGray, "Image Basic Gray Threshold");
+    cv::Mat threshold70ImageG;
+    cv::threshold(imageG, threshold70ImageG, 70, 255, cv::THRESH_BINARY_INV);
+    quickShow(threshold70ImageG, "Image Green Threshold 70");
 
-    cv::Mat thresholdImageG;
-    cv::threshold(imageG, thresholdImageG, 60, 255, cv::THRESH_BINARY_INV);
-    //quickShow(thresholdImageG, "Image Green Threshold");
+    cv::Mat threshold70ImageBlue;
+    cv::threshold(imageB, threshold70ImageBlue, 70, 255, cv::THRESH_BINARY_INV);
+    quickShow(threshold70ImageBlue, "Image Blue Threshold 70");
 
-    cv::Mat thresholdImageBlue;
-    cv::threshold(imageB, thresholdImageBlue, 70, 255, cv::THRESH_BINARY_INV);
-    //quickShow(thresholdImageBlue, "Image Blue Threshold");
+    //WINNER WINNER
+    cv::Mat threshold60ImageG;
+    cv::threshold(imageG, threshold60ImageG, 60, 255, cv::THRESH_BINARY_INV);
+    quickShow(threshold60ImageG, "Image Green Threshold 60");
 
-#pragma region Some testing
+
+#pragma region Some testing outside assignment requirements
     //cv::Mat blurredImage;
     //cv::GaussianBlur(imageG, blurredImage, cv::Size(11, 11), 0.8 );
     //quickShow(blurredImage, "Image Blurred");
@@ -76,10 +85,14 @@ int main() {
 #pragma endregion
 
     cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
+    cv::Mat element2x2 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(2, 2));
+    cv::Mat element4x4 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(4, 4));
+    cv::Mat elementEllipse = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
+
 
 
     cv::Mat imageErode;
-    cv::erode(thresholdImageG, imageErode, element, cv::Point(-1, -1), 1);
+    cv::erode(threshold60ImageG, imageErode, element, cv::Point(-1, -1), 1);
     //quickShow(imageErode, "Image erode 1 iteration");
 
 
@@ -88,9 +101,20 @@ int main() {
     // Morphalogical operations.
     //*************************************************************************
     //*************************************************************************
-    cv::Mat openingImage;
-    cv::morphologyEx(thresholdImageG, openingImage, cv::MORPH_OPEN, element, cv::Point(-1, -1), 2);
-    //quickShow(openingImage, "Image Opening");
+    
+    
+    cv::Mat openingImage, openingImage2x2, openingImage4x4;
+    cv::morphologyEx(threshold60ImageG, openingImage, cv::MORPH_OPEN, element, cv::Point(-1, -1), 1);
+    cv::morphologyEx(threshold60ImageG, openingImage2x2, cv::MORPH_OPEN, element2x2, cv::Point(-1, -1), 1);
+    cv::morphologyEx(threshold60ImageG, openingImage4x4, cv::MORPH_OPEN, element4x4, cv::Point(-1, -1), 1);
+    quickShow(openingImage, "Image Opening se3x3");
+    quickShow(openingImage2x2, "Image Opening se2x2");
+    quickShow(openingImage4x4, "Image Opening se4x4");
+
+    
+    
+    
+
 
     // seperately 
 
