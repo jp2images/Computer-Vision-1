@@ -14,7 +14,7 @@
 using namespace std;
 //using namespace cv;
 
-void quickShow(cv::Mat, std::string = "Quick Show");
+void quickShow(cv::Mat, std::string = "Quick Show", bool = false);
 
 int main() {
     //Assignment Part A
@@ -24,7 +24,7 @@ int main() {
     int imageWidth = image.size().width;
     int imageHeight = image.size().height;
     cout << "Image Dimensions: W" << imageWidth << " x H" << imageHeight << endl << endl;
-    quickShow(image, "Original");
+    //quickShow(image, "Original");
 
     //Make a copy so we don't mess up the original
     cv::Mat imageCopy = image.clone();
@@ -42,24 +42,24 @@ int main() {
     imageG = imageChannels[1];
     imageR = imageChannels[2];
 
-    cv::imshow("Image B", imageB);
-    cv::imshow("Image G", imageG);
-    cv::imshow("Image R", imageR);
-    cv::waitKey(0);
-    cv::destroyAllWindows();
+    //cv::imshow("Image B", imageB);
+    //cv::imshow("Image G", imageG);
+    //cv::imshow("Image R", imageR);
+    //cv::waitKey(0);
+    //cv::destroyAllWindows();
 
     //STEP 3.1: Perform the Thresholding
     cv::Mat threshold70ImageGray;
     cv::threshold(imageGray, threshold70ImageGray, 70, 255, cv::THRESH_BINARY_INV);
-    quickShow(threshold70ImageGray, "Image Basic Gray Threshold 70");
+    //quickShow(threshold70ImageGray, "Image Basic Gray Threshold 70");
 
     cv::Mat threshold70ImageG;
     cv::threshold(imageG, threshold70ImageG, 70, 255, cv::THRESH_BINARY_INV);
-    quickShow(threshold70ImageG, "Image Green Threshold 70");
+    //quickShow(threshold70ImageG, "Image Green Threshold 70");
 
     cv::Mat threshold70ImageBlue;
     cv::threshold(imageB, threshold70ImageBlue, 70, 255, cv::THRESH_BINARY_INV);
-    quickShow(threshold70ImageBlue, "Image Blue Threshold 70");
+    //quickShow(threshold70ImageBlue, "Image Blue Threshold 70");
 
     //WINNER WINNER
     cv::Mat threshold60ImageG;
@@ -84,65 +84,48 @@ int main() {
     //quickShow(thresholdblurredImage, "Image Median Blurred Threshold");
 #pragma endregion
 
-    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
-    cv::Mat element2x2 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(2, 2));
-    cv::Mat element4x4 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(4, 4));
-    cv::Mat elementEllipse = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
-
-
-
-    cv::Mat imageErode;
-    cv::erode(threshold60ImageG, imageErode, element, cv::Point(-1, -1), 1);
-    //quickShow(imageErode, "Image erode 1 iteration");
-
-
     //*************************************************************************
     //*************************************************************************
     // Morphalogical operations.
     //*************************************************************************
     //*************************************************************************
     
-    
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
+    cv::Mat element2x2 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(2, 2));
+    cv::Mat element4x4 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(4, 4));
+    cv::Mat elementEllipse = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
+
     cv::Mat openingImage, openingImage2x2, openingImage4x4;
+    cv::Mat closingImage, closingImage2x2, closingImage4x4;
+
     cv::morphologyEx(threshold60ImageG, openingImage, cv::MORPH_OPEN, element, cv::Point(-1, -1), 1);
+    //quickShow(openingImage, "Image Opening se3x3", true);
     cv::morphologyEx(threshold60ImageG, openingImage2x2, cv::MORPH_OPEN, element2x2, cv::Point(-1, -1), 1);
+    //quickShow(openingImage2x2, "Image Opening se2x2", true);
     cv::morphologyEx(threshold60ImageG, openingImage4x4, cv::MORPH_OPEN, element4x4, cv::Point(-1, -1), 1);
-    quickShow(openingImage, "Image Opening se3x3");
-    quickShow(openingImage2x2, "Image Opening se2x2");
-    quickShow(openingImage4x4, "Image Opening se4x4");
+    //quickShow(openingImage4x4, "Image Opening se4x4", true);
 
+    cv::morphologyEx(threshold60ImageG, closingImage, cv::MORPH_CLOSE, element, cv::Point(-1, -1), 1);
+    //quickShow(openingImage, "Image Closing se3x3", true);
+    cv::morphologyEx(threshold60ImageG, closingImage4x4, cv::MORPH_CLOSE, element4x4, cv::Point(-1, -1), 1);
+    //quickShow(openingImage4x4, "Image Closing se4x4", true);
+
+    //WINNER WINNER
+    cv::morphologyEx(threshold60ImageG, closingImage2x2, cv::MORPH_CLOSE, element2x2, cv::Point(-1, -1), 1);
+    //quickShow(openingImage2x2, "Image Closing se2x2", true);
     
     
+    cv::Mat imageDilate;
+    //cv::dilate(openingImage2x2, imageDilate, element, cv::Point(-1, -1), 1);
+    //quickShow(imageDilate, "Image Dilation with 1 iteration");
     
-
-
-    // seperately 
-
-    //cv::Mat imageErode;
-    cv::erode(openingImage, imageErode, element, cv::Point(-1, -1), 1);
-    //quickShow(imageErode, "Image erode after opening");
-
-    // WINNER WINNER WINNER
-    cv::Mat closingAfterErodeImage;
-    cv::Mat closeEoredSe = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(4, 4));
-    cv::morphologyEx(imageErode, closingAfterErodeImage, cv::MORPH_CLOSE, closeEoredSe, cv::Point(-1, -1), 2);
-    quickShow(closingAfterErodeImage, "Image Close After Erode");
+    cv::Mat imageFinal;
+    cv::erode(closingImage2x2, imageFinal, element, cv::Point(-1, -1), 1);
+    //cv::erode(imageDilate, imageFinal, element, cv::Point(-1, -1), 1);
+    quickShow(imageFinal, "Image erode - FINAL Morph Operation");
 
 
 
-
-    //*******************************************************
-    //*******************************************************
-    //Copied from the jupyter notebook
-    cv::Mat openAndCloseImage;
-    element = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(3, 3));
-    cv::morphologyEx(openingImage, openAndCloseImage, cv::MORPH_CLOSE, element, cv::Point(-1, -1), 2);
-    //quickShow(openAndCloseImage, "Image Close");
-
-    //erode the image
-    cv::Mat fillCoinsImage;
-    cv::erode(openAndCloseImage, fillCoinsImage, element, cv::Point(-1, -1), 2);
-    //quickShow(fillCoinsImage, "Image Eroded after a close");
 
 
     //Setup a blob detector with default parameters
@@ -154,7 +137,7 @@ int main() {
 
     //by area
     //params.filterByArea = true;
-    params.minArea = 200;
+    params.minArea = 250;
     params.maxArea = 50000;
 
     //by circularity
@@ -162,18 +145,18 @@ int main() {
     params.minCircularity = 0.7;
     //params.maxCircularity = 1.0;
 
-    ////by convexity
-    //params.filterByConvexity = true;
-    //params.minConvexity = 0.87;
+    //by convexity
+    params.filterByConvexity = true;
+    params.minConvexity = 0.7;
 
     ////by inertia
     params.filterByInertia = true;
-    params.minInertiaRatio = 0.8;
+    params.minInertiaRatio = 0.7;
 
 
     cv::Ptr<cv::SimpleBlobDetector> custDetector = cv::SimpleBlobDetector::create(params);
     vector<cv::KeyPoint> keypoints;
-    custDetector->detect(closingAfterErodeImage, keypoints);
+    custDetector->detect(imageFinal, keypoints);
 
     cout << "Blob count: " << keypoints.size() << endl << endl;
 
@@ -200,14 +183,19 @@ int main() {
     }
     quickShow(image, "Filtered blobs");
 
+
+    cv::destroyAllWindows();
+
     return 0;
 }
 
 
 
-void quickShow(cv::Mat source, std::string windowName) { //Default parameter is in the prototype/forward declaration.
+void quickShow(cv::Mat source, std::string windowName, bool keepWindow) { //Default parameter is in the prototype/forward declaration.
     cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
     cv::imshow(windowName, source);
     cv::waitKey(0);
-    cv::destroyWindow(windowName);
+    if(!keepWindow)
+        cv::destroyWindow(windowName);
+    return;
 }
