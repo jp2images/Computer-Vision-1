@@ -178,7 +178,7 @@ int main() {
         //mark the blob in green
         cv::circle(imageCopy, cv::Point(x, y), radius, cv::Scalar(0, 255, 0), 5);
     }
-    quickShow(imageCopy, "Filtered blobs");
+    //quickShow(imageCopy, "Filtered blobs");
 
 #pragma endregion
 
@@ -190,54 +190,110 @@ int main() {
     int nComponents = cv::connectedComponents(ccaThreshold, ccaImage);
     cv::Mat ccaImageCopy = ccaImage.clone();
     cv::Mat ccaColorMap = displayConnectedComponents(ccaImageCopy);
-    quickShow(ccaColorMap, "Connected Components as Blobs");
+    //quickShow(ccaColorMap, "Connected Components as Blobs");
 #pragma endregion
 
 #pragma region Contour Time
 
-    cv::Mat contourImage = image.clone();
+    cv::Mat imageWithContours = image.clone();
+    quickShow(imageWithContours, "Create image to show with contours");
+
+    cv::Mat invertedFinalImage;
+    cv::threshold(imageFinal, invertedFinalImage, 127, 255, cv::THRESH_BINARY_INV);
+    quickShow(invertedFinalImage, "Create inverted image to show with contours");
 
     vector<vector<cv::Point>> contours, filteredContours;
-    vector<cv::Vec4i> hierarchy;
+    vector<cv::Vec4i> hierarchy, filteredHierarchy;
 
-    cv::findContours(imageFinal, contours, hierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
-    cout << "Number of contours found: " << contours.size() << endl << endl;
+    cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
+    cout << "Number of contours found before filtering: " << contours.size() << endl;
+    quickShow(invertedFinalImage, "inverted final image");
     
     for (int c = 0; c < contours.size(); c++) {
         if (contours[c].size() > 140) {
             filteredContours.push_back(contours[c]);
         }
     }
-
-    cv::drawContours(contourImage, filteredContours, -1, cv::Scalar(0, 0, 0), 5);
-    quickShow(contourImage, "Contours");
+    cout << "Number of coins found after filtering: " << filteredContours.size() << endl << endl;
+    cv::drawContours(imageWithContours, filteredContours, -1, cv::Scalar(0, 0, 0), 4);
+    //quickShow(imageWithContours, "Contours");
 
     cv::Moments M;
-    //int x, y;
-
     //use the contour moments to find the centroid
     for (size_t i = 0; i < contours.size(); i++) {
-        if (contours[i].size() > 125) {
+        if (contours[i].size() > 140) {
             //moments are weighted averages of pixel intensities and return certain properties
             M = cv::moments(contours[i]);
             x = int(M.m10 / double(M.m00));
             y = int(M.m01 / double(M.m00));
 
             //mark the center of each contour
-            cv::circle(contourImage, cv::Point(x, y), 3, cv::Scalar(0, 255, 0), 1);
+            cv::circle(imageWithContours, cv::Point(x, y), 3, cv::Scalar(0, 0, 255), 5);
         }
     }
-    quickShow(contourImage, "Marked Contours");
+    quickShow(imageWithContours, "Marked Contours");
+
+
+
+    //Show the outer contour
+    cv::Mat outerContourImage = image.clone();
+    vector<vector<cv::Point>> outerContour;
+    vector<cv::Vec4i> outerHierarchy;
+    cv::findContours(imageFinal, outerContour, outerHierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    cv::drawContours(outerContourImage, outerContour, -1, cv::Scalar(255, 255, 255), 8);
+    quickShow(outerContourImage, "Outer Contour");
+
+
+
+
+
+
+    cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    cv::drawContours(imageWithContours, filteredContours, -1, cv::Scalar(0, 0, 0), 4);
+    quickShow(imageWithContours, "Inverted Image Marked Contours");
+
+    //Calculate the areas of the coins
+    double area;
+    double perimeter;
+
+    cout << endl;
+    for (size_t c = 0; c < filteredContours.size(); c++) {
+        area = cv::contourArea(filteredContours[c]);
+        perimeter = cv::arcLength(filteredContours[c], true);
+        cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
+    }
+    cout << endl << endl;
+
+
+
+
+
+    //This is working but doesn't include the outside contour
+    //cout << endl;
+    //for (size_t c = 0; c < filteredContours.size(); c++) {
+    //    area = cv::contourArea(filteredContours[c]);
+    //    perimeter = cv::arcLength(filteredContours[c], true);
+    //    cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
+    //}
+    //cout << endl << endl;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 #pragma endregion
 
-
-
     cv::destroyAllWindows();
-
     return 0;
 }
 
@@ -251,7 +307,6 @@ void quickShow(cv::Mat source, std::string windowName, bool keepWindow) { //Defa
         cv::destroyWindow(windowName);
     return;
 }
-
 
 cv::Mat displayConnectedComponents(cv::Mat& im)
 {
