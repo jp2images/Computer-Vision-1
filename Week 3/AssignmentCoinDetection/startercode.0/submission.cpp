@@ -16,31 +16,31 @@ void displayImage(Mat image){
 	destroyAllWindows();
 }
 
-Mat displayConnectedComponents(Mat &im)
-{
-	// Make a copy of the image
-	Mat imLabels = im.clone();
-
-	// First let's find the min and max values in imLabels
-	Point minLoc, maxLoc;
-	double min, max;
-
-	// The following line finds the min and max pixel values
-	// and their locations in an image.
-	minMaxLoc(imLabels, &min, &max, &minLoc, &maxLoc);
-
-	// Normalize the image so the min value is 0 and max value is 255.
-	imLabels = 255 * (imLabels - min) / (max - min);
-
-	// Convert image to 8-bits
-	imLabels.convertTo(imLabels, CV_8U);
-
-	// Apply a color map
-	Mat imColorMap;
-	applyColorMap(imLabels, imColorMap, COLORMAP_JET);
-
-	return imColorMap;
-}
+//Mat displayConnectedComponents(Mat &im)
+//{
+//	// Make a copy of the image
+//	Mat imLabels = im.clone();
+//
+//	// First let's find the min and max values in imLabels
+//	Point minLoc, maxLoc;
+//	double min, max;
+//
+//	// The following line finds the min and max pixel values
+//	// and their locations in an image.
+//	minMaxLoc(imLabels, &min, &max, &minLoc, &maxLoc);
+//
+//	// Normalize the image so the min value is 0 and max value is 255.
+//	imLabels = 255 * (imLabels - min) / (max - min);
+//
+//	// Convert image to 8-bits
+//	imLabels.convertTo(imLabels, CV_8U);
+//
+//	// Apply a color map
+//	Mat imColorMap;
+//	applyColorMap(imLabels, imColorMap, COLORMAP_JET);
+//
+//	return imColorMap;
+//}
 
 //int main(){
 //	
