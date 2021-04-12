@@ -18,6 +18,8 @@ cv::Mat displayConnectedComponents(cv::Mat&);
 void quickShow(cv::Mat, std::string = "Quick Show", bool = false);
 
 int main() {
+
+#pragma region Read in the image and convert to grayscale
     //Assignment Part A
     //STEP 1: Read the image
     string imagePath = DATA_PATH + "images/CoinsA.png";
@@ -48,6 +50,7 @@ int main() {
     //cv::imshow("Image R", imageR);
     //cv::waitKey(0);
     //cv::destroyAllWindows();
+#pragma endregion
 
 #pragma region Find the best threshold level
     //STEP 3.1: Perform the Thresholding
@@ -111,11 +114,10 @@ int main() {
     cv::morphologyEx(threshold60ImageG, closingImage2x2, cv::MORPH_CLOSE, element2x2, cv::Point(-1, -1), 1);
     //quickShow(openingImage2x2, "Image Closing se2x2", true);
     
-    cv::Mat imageFinal;
-    cv::Mat imageDilate, imageErode;
+    cv::Mat imageFinal, imageErode;
     cv::erode(openingImage2x2, imageErode, element, cv::Point(-1, -1), 1);
     cv::dilate(imageErode, imageFinal, element, cv::Point(-1, -1), 2);
-    quickShow(imageFinal, "Image erode - FINAL Morph Operation");
+    //quickShow(imageFinal, "Image erode - FINAL Morph Operation");
 #pragma endregion
 
 #pragma region find the blobs that meet the filter criteria
@@ -195,28 +197,60 @@ int main() {
 
 #pragma region Contour Time
 
+    //Full color image with no infomration added
     cv::Mat imageWithContours = image.clone();
-    quickShow(imageWithContours, "Create image to show with contours");
+    //quickShow(imageWithContours, "Create image before the contours are added");
 
+    //The mask for contour search
     cv::Mat invertedFinalImage;
     cv::threshold(imageFinal, invertedFinalImage, 127, 255, cv::THRESH_BINARY_INV);
-    quickShow(invertedFinalImage, "Create inverted image to show with contours");
+    quickShow(invertedFinalImage, "The inverted image for contour search");
 
-    vector<vector<cv::Point>> contours, filteredContours;
-    vector<cv::Vec4i> hierarchy, filteredHierarchy;
+    vector<vector<cv::Point>> contours, filteredContours, testContours;
+    vector<cv::Vec4i> hierarchy, filteredHierarchy, testHierarchy;
 
-    cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
-    cout << "Number of contours found before filtering: " << contours.size() << endl;
-    quickShow(invertedFinalImage, "inverted final image");
+    cv::findContours(imageFinal, testContours, testHierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
+    //cv::drawContours(imageFinal, testContours, -1, cv::Scalar(150, 100, 150), 8);
+    //quickShow(imageFinal, "Test all Found Contours");
+
+    //cv::findContours(imageFinal, contours, hierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
+    //cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
+    cv::drawContours(imageFinal, testContours, -1, cv::Scalar(150, 100, 100), 8);
+    cout << "Number of contours found before filtering: " << testContours.size() << endl;
+    quickShow(imageFinal, "Final image with all contours");
+    //quickShow(invertedFinalImage, "inverted final image");
     
-    for (int c = 0; c < contours.size(); c++) {
-        if (contours[c].size() > 140) {
-            filteredContours.push_back(contours[c]);
+
+    double fullArea;
+    double fullPerimeter;
+
+    cout << endl << "Inverted final image" << endl;;
+    for (size_t c = 0; c < testContours.size(); c++) {
+        fullArea = cv::contourArea(testContours[c]);
+        fullPerimeter = cv::arcLength(testContours[c], true);
+
+        if (fullArea > 140) {
+            cout << "Contour #" << c + 1 << "\thas area: " << fullArea << "\t\tand perimeter: " << fullPerimeter << endl;
+            filteredContours.push_back(testContours[c]);
         }
     }
+    cout << endl << endl;
+
+
+
+    //for (int c = 0; c < testContours.size(); c++) {
+    //    if (testContours[c].size() > 140) {
+    //        filteredContours.push_back(testContours[c]);
+    //    }
+    //}
     cout << "Number of coins found after filtering: " << filteredContours.size() << endl << endl;
     cv::drawContours(imageWithContours, filteredContours, -1, cv::Scalar(0, 0, 0), 4);
-    //quickShow(imageWithContours, "Contours");
+    quickShow(imageWithContours, "Found Contours");
+    
+    //cv::drawContours(imageFinal, filteredContours, -1, cv::Scalar(255, 100, 150), 8);
+    //cv::drawContours(imageFinal, testContours, -1, cv::Scalar(150, 100, 150), 8);
+    //quickShow(imageFinal, "Test all Found Contours after filter");
+
 
     cv::Moments M;
     //use the contour moments to find the centroid
@@ -237,20 +271,27 @@ int main() {
 
     //Show the outer contour
     cv::Mat outerContourImage = image.clone();
-    vector<vector<cv::Point>> outerContour;
+    vector<vector<cv::Point>> outerContour, filteredOuterContour;
     vector<cv::Vec4i> outerHierarchy;
-    cv::findContours(imageFinal, outerContour, outerHierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
-    cv::drawContours(outerContourImage, outerContour, -1, cv::Scalar(255, 255, 255), 8);
+    cv::findContours(imageFinal, outerContour, outerHierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE);
+//    cv::findContours(imageFinal, outerContour, outerHierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    //cv::drawContours(outerContourImage, outerContour, -1, cv::Scalar(200, 255, 155), 8);
+    //quickShow(outerContourImage, "Outer Contour");
+
+    for (int c = 0; c < contours.size(); c++) {
+        if (contours[c].size() > 140) {
+            filteredOuterContour.push_back(contours[c]);
+        }
+    }
+    cout << "Number of coins found after filtering: " << filteredOuterContour.size() << endl << endl;
+    cv::drawContours(outerContourImage, filteredOuterContour, -1, cv::Scalar(200, 255, 155), 8);
     quickShow(outerContourImage, "Outer Contour");
 
 
 
-
-
-
-    cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
-    cv::drawContours(imageWithContours, filteredContours, -1, cv::Scalar(0, 0, 0), 4);
-    quickShow(imageWithContours, "Inverted Image Marked Contours");
+    //cv::findContours(invertedFinalImage, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    //cv::drawContours(imageWithContours, filteredContours, -1, cv::Scalar(0, 0, 0), 4);
+    //quickShow(imageWithContours, "Inverted Image Marked Contours");
 
     //Calculate the areas of the coins
     double area;
