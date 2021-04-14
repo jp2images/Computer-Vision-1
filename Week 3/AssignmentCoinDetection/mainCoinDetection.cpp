@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> // for _itoa_s functions, _countof, count macro, etc
+#include <algorithm>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
@@ -202,7 +203,7 @@ int main() {
 #pragma region Contour Time
 
     //****************************************
-    // SHOW ONLY THE OUTER COUNTOUT
+    // SHOW ONLY THE OUTER CONTOUR
     // ***************************************
     //Full color image with no infomration added
     cv::Mat imageWithAllContours = image.clone();
@@ -222,8 +223,8 @@ int main() {
     vector<cv::Vec4i> filteredOutsideHierarchy, outsideHierarchy;
     double outsideArea;
     cv::findContours(imageCoinMask, outsideContours, outsideHierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
-    cv::drawContours(coinMaskContour, outsideContours, -1, cv::Scalar(0, 255, 0), 6);
-    quickShow(coinMaskContour, "Mask image before all countours except outer");
+    //cv::drawContours(coinMaskContour, outsideContours, -1, cv::Scalar(0, 255, 0), 6);
+    //quickShow(coinMaskContour, "Mask image before all countours except outer");
 
     for (size_t c = 0; c < outsideContours.size(); c++) {
         outsideArea = cv::contourArea(outsideContours[c]);
@@ -244,38 +245,28 @@ int main() {
 
 
 
+    cv::Mat imageWithoutOutsideContour = image.clone();
+    vector<vector<cv::Point>> filteredCoinContours, coinContours;
+    vector<cv::Vec4i> coinHierarchy;
 
+    double fullArea, fullPerimeter;
+    cv::findContours(imageCoinMask, coinContours, coinHierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
 
+    for (size_t c = 0; c < coinContours.size(); c++) {
+        fullArea = cv::contourArea(coinContours[c]);
 
-
-
-
-
-
-
-
+        if (fullArea < imageArea && fullArea > 140) {
+            filteredCoinContours.push_back(coinContours[c]);
+        }
+    }
+    cv::drawContours(imageWithoutOutsideContour, filteredCoinContours, -1, cv::Scalar(255, 255, 0), 6);
+    quickShow(imageWithoutOutsideContour, "Coin Contours");
 
 
 
 
 
     vector<vector<cv::Point>> filteredContours;
-    //vector<cv::Vec4i> allFoundHierarchy;
-
-    double fullArea, fullPerimeter;
-
-    cout << endl << "Inverted final image" << endl;;
-    for (size_t c = 0; c < allFoundContours.size(); c++) {
-        fullArea = cv::contourArea(allFoundContours[c]);
-
-        if (fullArea > 140) {
-            //cout << "Contour #" << c + 1 << "\thas area: " << fullArea << "\t\tand perimeter: " << fullPerimeter << endl;
-            filteredContours.push_back(allFoundContours[c]);
-        }
-    }
-    cout << endl << endl;
-
-
     cv::Moments M;
     //use the contour moments to find the centroid
     for (size_t i = 0; i < filteredContours.size(); i++) {
@@ -343,7 +334,8 @@ int main() {
 
 
 
-    //Calculate the areas of the coins
+
+    //Calculate the areas of the contours
     double area;
     double perimeter;
 
@@ -355,6 +347,18 @@ int main() {
     }
     cout << endl << endl;
 
+
+
+
+    cout << "List all of the contrours without the largest" << endl;
+    for (size_t c = 0; c < filteredContours.size(); c++) {
+        area = cv::contourArea(filteredContours[c]);
+        if (area < imageArea) {
+            perimeter = cv::arcLength(filteredContours[c], true);
+            cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
+        }
+    }
+    cout << endl << endl;
 
 
 
