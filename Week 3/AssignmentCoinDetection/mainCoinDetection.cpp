@@ -221,7 +221,7 @@ int main() {
     cv::Mat coinMaskContour = imageCoinMask.clone();
     vector<vector<cv::Point>> outsideContours, filteredOutsideContours;
     vector<cv::Vec4i> filteredOutsideHierarchy, outsideHierarchy;
-    double outsideArea;
+    double outsideArea; 
     cv::findContours(imageCoinMask, outsideContours, outsideHierarchy, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
     //cv::drawContours(coinMaskContour, outsideContours, -1, cv::Scalar(0, 255, 0), 6);
     //quickShow(coinMaskContour, "Mask image before all countours except outer");
@@ -238,10 +238,6 @@ int main() {
 
     cv::drawContours(outsideContourImage, filteredOutsideContours, -1, cv::Scalar(0, 255, 0), 6);
     quickShow(outsideContourImage, "Marked Contours around the outside of the image");
-
-
-
-
 
 
 
@@ -263,25 +259,22 @@ int main() {
     quickShow(imageWithoutOutsideContour, "Coin Contours");
 
 
-
-
-
-    vector<vector<cv::Point>> filteredContours;
+   // vector<vector<cv::Point>> filteredContours;
     cv::Moments M;
     //use the contour moments to find the centroid
-    for (size_t i = 0; i < filteredContours.size(); i++) {
-        if (filteredContours[i].size() > 140) {
+    for (size_t i = 0; i < filteredCoinContours.size(); i++) {
+        if (filteredCoinContours[i].size() > 140) {
             //moments are weighted averages of pixel intensities and return certain properties
-            M = cv::moments(filteredContours[i]);
+            M = cv::moments(filteredCoinContours[i]);
             x = int(M.m10 / double(M.m00));
             y = int(M.m01 / double(M.m00));
 
             //mark the center of each contour
-            cv::circle(imageWithAllContours, cv::Point(x, y), 3, cv::Scalar(0, 0, 255), 5);
+            cv::circle(imageWithoutOutsideContour, cv::Point(x, y), 3, cv::Scalar(0, 0, 255), 5);
         }
     }
-    cv::drawContours(imageWithAllContours, filteredContours, -1, cv::Scalar(100, 150, 100), 6);
-    quickShow(imageWithAllContours, "Marked Contours at centers");
+    cv::drawContours(imageWithoutOutsideContour, filteredCoinContours, -1, cv::Scalar(100, 150, 100), 6);
+    quickShow(imageWithoutOutsideContour, "Marked Contours at centers");
 
 
 
@@ -291,12 +284,12 @@ int main() {
     //vector<cv::Vec4i> allFoundHierarchy;
 
     char buffer[_MAX_U64TOSTR_BASE2_COUNT];
-    int contCount = filteredContours.size();
+    int contCount = filteredCoinContours.size();
     _itoa_s(contCount, buffer, 3, 10);
     string result = buffer;
 
-    cout << "Number of coins found after filtering: " << filteredContours.size() << endl << endl;
-    cv::drawContours(imageWithAllContours, filteredContours, -1, cv::Scalar(204, 109, 0), 8);
+    cout << "Number of coins found after filtering: " << filteredCoinContours.size() << endl << endl;
+    cv::drawContours(imageWithAllContours, filteredCoinContours, -1, cv::Scalar(204, 109, 0), 8);
     quickShow(imageWithAllContours, "Found Contours: " + result);
 
 
@@ -322,7 +315,6 @@ int main() {
     vector<cv::Vec4i> outerHierarchy;
     cv::findContours(imageCoinMask, outerContour, outerHierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE);
 
-
     for (int c = 0; c < contours.size(); c++) {
         if (contours[c].size() > 140) {
             filteredOuterContour.push_back(contours[c]);
@@ -340,9 +332,9 @@ int main() {
     double perimeter;
 
     cout << endl;
-    for (size_t c = 0; c < filteredContours.size(); c++) {
-        area = cv::contourArea(filteredContours[c]);
-        perimeter = cv::arcLength(filteredContours[c], true);
+    for (size_t c = 0; c < filteredCoinContours.size(); c++) {
+        area = cv::contourArea(filteredCoinContours[c]);
+        perimeter = cv::arcLength(filteredCoinContours[c], true);
         cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
     }
     cout << endl << endl;
@@ -351,10 +343,10 @@ int main() {
 
 
     cout << "List all of the contrours without the largest" << endl;
-    for (size_t c = 0; c < filteredContours.size(); c++) {
-        area = cv::contourArea(filteredContours[c]);
+    for (size_t c = 0; c < filteredCoinContours.size(); c++) {
+        area = cv::contourArea(filteredCoinContours[c]);
         if (area < imageArea) {
-            perimeter = cv::arcLength(filteredContours[c], true);
+            perimeter = cv::arcLength(filteredCoinContours[c], true);
             cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
         }
     }
@@ -371,19 +363,6 @@ int main() {
     //    cout << "Contour #" << c + 1 << " has area: " << area << "\tand perimeter: " << perimeter << endl;
     //}
     //cout << endl << endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #pragma endregion
